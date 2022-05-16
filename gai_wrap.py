@@ -51,7 +51,7 @@ import sys
 import socket
 import ipaddress
 import time
-from threading import Lock
+import threading
 
 #work-around for Python system error
 try:
@@ -83,7 +83,7 @@ if _my_os != "win32":
 
 _ulaps = []  #start with empty list of ULA prefixes
 _expire = 0  #int(time.monotonic()) when we consider ULA info stale
-_ula_lock = Lock()
+_ula_lock = threading.Lock()
 _ULA_LIFE = 60 #consider ULA info is stale after this many seconds
 
 
