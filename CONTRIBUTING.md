@@ -33,7 +33,8 @@ The [*mermaid* tool](https://docs.github.com/en/get-started/writing-on-github/wo
 ![Alt text](./diag.svg)
 <img src="./diag.svg">
 ~~~
-
+![Alt text](./diag.svg)
+<img src="./diag.svg">
 
 The language is English, preferably US spelling. 
 
