@@ -1,2 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" viewBox="0 0 21000 29700" preserveAspectRatio="xMidYMid" fill-rule="evenodd" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g visibility="visible" id="Default" class="Master_Slide"><g style="stroke:none;fill:none"><rect x="0" y="0" width="21000" height="29700"/></g></g><g visibility="visible" id="page1" class="Slide"><g class="Drawing"><g><g style="stroke:rgb(128,128,128);stroke-width:100;stroke-linejoin:round;fill:none"><path style="fill:none" d="M 8200,3600 L 10601,5950 8200,8301 5800,5950 8200,3600 8200,3600"/></g><g style="stroke:none;fill:none"><rect x="5800" y="3600" width="4801" height="4701"/></g></g></g><g class="Drawing"><g><g style="stroke:rgb(128,128,128);stroke-width:100;stroke-linejoin:round;fill:none"><path style="fill:none" d="M 12816,2800 C 11977,2800 11287,3628 11287,4600 11287,5114 10942,5515 10498,5515 10400,5515 10400,5515 10400,5515 10400,6401 10400,6401 10400,6401 10498,6401 10498,6401 10498,6401 11361,6401 12051,5600 12051,4600 12051,4114 12397,3714 12816,3714 12939,3714 12939,3714 12939,3714 12939,4286 12939,4286 12939,4286 13901,3257 13901,3257 13901,3257 12939,2200 12939,2200 12939,2200 12939,2800 12939,2800 12939,2800 L 12816,2800 12816,2800"/></g><g style="stroke:none;fill:none"><rect x="10400" y="2200" width="3501" height="4201"/></g></g></g><g class="Drawing"><g><g style="stroke:rgb(128,128,128);stroke-width:100;stroke-linejoin:round;fill:none"><path style="fill:none" d="M 16250,7700 L 13900,7700 13900,1500 18600,1500 18600,7700 16250,7700"/></g><g style="stroke:none;fill:none"><rect x="13900" y="1500" width="4701" height="6201"/></g></g></g><g class="Drawing"><g><g style="stroke:rgb(0,0,0);stroke-width:100;stroke-linejoin:round;fill:none"><path style="fill:none" d="M 8300,8600 L 8300,12960"/></g><g style="stroke:none;fill:rgb(0,0,0)"><path d="M 8300,13500 L 8525,12825 8075,12825 8300,13500 Z"/></g></g></g><g class="Drawing"><g><g style="stroke:rgb(128,128,128);stroke-width:200;stroke-linejoin:round;fill:none"><path style="fill:none" d="M 8400,13500 C 9590,13500 10500,14388 10500,15550 10500,16712 9590,17600 8400,17600 7210,17600 6300,16712 6300,15550 6300,14388 7210,13500 8400,13500"/><path style="fill:none" d="M 7719,14704 C 7847,14704 7945,14799 7945,14924 7945,15049 7847,15145 7719,15145 7591,15145 7493,15049 7493,14924 7493,14799 7591,14704 7719,14704"/><path style="fill:none" d="M 9079,14704 C 9207,14704 9305,14799 9305,14924 9305,15049 9207,15145 9079,15145 8951,15145 8853,15049 8853,14924 8853,14799 8951,14704 9079,14704"/><path style="fill:none" d="M 7247,16444 C 7988,16826 8812,16826 9553,16444"/><path style="fill:none" d="M 6300,13500 L 6300,13500"/><path style="fill:none" d="M 10501,17601 L 10501,17601"/></g><g style="stroke:none;fill:none"><rect x="6300" y="13500" width="4201" height="4101"/></g></g></g><g class="Drawing"><g><g style="stroke:rgb(128,128,128);stroke-width:100;stroke-linejoin:round;fill:none"><path style="fill:none" d="M 17101,3830 L 15987,4019 16744,3137 16375,3100 15477,4373 16545,4188 15785,5123 15663,4731 15400,5801 16266,5499 15955,5330 17101,3830 17101,3830 17101,3830"/></g><g style="stroke:none;fill:none"><rect x="15400" y="3100" width="1701" height="2701"/></g></g></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="18cm" height="6cm" viewBox="72 66 346 111" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <path style="fill: #ffffff" d="M 73 83.8333 C 91.6,71.9583 100.9,68 119.5,68 C 138.1,68 147.4,71.9583 166,83.8333 L 166,147.167 C 147.4,159.042 138.1,163 119.5,163 C 100.9,163 91.6,159.042 73,147.167 L 73,83.8333z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 73 83.8333 C 91.6,71.9583 100.9,68 119.5,68 C 138.1,68 147.4,71.9583 166,83.8333 L 166,147.167 C 147.4,159.042 138.1,163 119.5,163 C 100.9,163 91.6,159.042 73,147.167 L 73,83.8333"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 73 83.8333 C 91.6,95.7083 100.9,99.6667 119.5,99.6667 C 138.1,99.6667 147.4,95.7083 166,83.8333"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="119.5" y="127.417">
+      <tspan x="119.5" y="127.417">Disk</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="173" y1="119" x2="278.264" y2="119.915"/>
+    <polygon style="fill: #000000" points="285.764,119.981 275.721,124.893 278.264,119.915 275.808,114.894 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="285.764,119.981 275.721,124.893 278.264,119.915 275.808,114.894 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="209" y="112">
+    <tspan x="209" y="112">FTP</tspan>
+  </text>
+  <g>
+    <ellipse style="fill: #ffffff" cx="363" cy="122" rx="53" ry="54"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="363" cy="122" rx="53" ry="54"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="363" y1="176" x2="416" y2="176"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="363" y="126">
+      <tspan x="363" y="126"></tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="351" y="127.8">
+    <tspan x="351" y="127.8">Tape</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="209" y="137">
+    <tspan x="209" y="137">IPv6</tspan>
+  </text>
+</svg>
