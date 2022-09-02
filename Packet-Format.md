@@ -62,3 +62,5 @@ The earlier headers have functions including:
 
 An interesting feature of IPv6 is that extension header types are numbered out of the same space as IP protocol numbers. It isn't a coincidence that the next header type for UDP is 17, the same as IPPROTO_UDP; it's by design. The latest set of valid extension header types is always available from [IANA](https://www.iana.org/assignments/ipv6-parameters/ipv6-parameters.xhtml).
 
+Extension headers and options are described in more detail in the section [Extension headers and options](Extension-headers-and-options.md).
+
