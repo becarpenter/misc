@@ -1,5 +1,5 @@
 # book6: A Collaborative IPv6 Book.
-This is a provisional list of contents to start the discussion. It will change.
+This is the current list of contents. It will change as the book evolves.
 # List of Contents
 [1. Introduction](1.%20Introduction%20and%20Foreword)
 * Foreword
@@ -20,20 +20,27 @@ This is a provisional list of contents to start the discussion. It will change.
 * Routing
 * Transport protocols
 * Extension headers and options
+
 [3. Coexistence with Legacy IPv4](3.%20Coexistence%20with%20Legacy%20IPv4)
 * Dual stacks
 * Tunnels
 * Translation
 * Obsolete techniques
+
 [4. Security](4.%20Security)
 * Layer 2 considerations
 * Filtering 
+
 [5. Deployment](5.%20Deployment)
 * Status
 * Deployment by carriers
 * Deployment in the home
 * Deployment in the enterprise
+
 [6. Management and operations](6.%20Management%20and%20operations)
+
 [7. Case studies](7.%20Case%20studies)
+
 [8. Further Reading](8.%20Further%20Reading)
-[3. Chapter Template](3.%20Chapter%20Template)
+
+[99. Chapter Template](99.%20Chapter%20Template)
