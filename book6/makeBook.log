@@ -1,4 +1,4 @@
-makeBook run at 2022-09-16 11:33:35 UTC+1200
+makeBook run at 2022-09-16 11:51:07 UTC+1200
 Running in directory C:\brian\docs\professional\ipv6gen\book6
 Processing '1. Introduction and Foreword'
 Processing '2. IPv6 Basic Technology'
@@ -8,4 +8,9 @@ Processing '5. Deployment'
 Processing '6. Management and operations'
 Processing '7. Case studies'
 Processing '8. Further Reading'
-Processing '3. Chapter Template'
+Processing '99. Chapter Template'
+Reconciling base and contents for '99. Chapter Template'
+Added 'First Section' to '99. Chapter Template' contents
+Added 'Section Template' to '99. Chapter Template' contents
+Added 'Last Section' to '99. Chapter Template' contents
+'Contents.md' written

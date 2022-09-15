@@ -20,27 +20,23 @@ This is the current list of contents. It will change as the book evolves.
 * Routing
 * Transport protocols
 * Extension headers and options
-
 [3. Coexistence with Legacy IPv4](3.%20Coexistence%20with%20Legacy%20IPv4)
 * Dual stacks
 * Tunnels
 * Translation
 * Obsolete techniques
-
 [4. Security](4.%20Security)
 * Layer 2 considerations
 * Filtering 
-
 [5. Deployment](5.%20Deployment)
 * Status
 * Deployment by carriers
 * Deployment in the home
 * Deployment in the enterprise
-
 [6. Management and operations](6.%20Management%20and%20operations)
-
 [7. Case studies](7.%20Case%20studies)
-
 [8. Further Reading](8.%20Further%20Reading)
-
+* First Section
+* Section Template
+* Last Section
 [99. Chapter Template](99.%20Chapter%20Template)
