@@ -282,7 +282,7 @@ while contentx < len(contents)-1:  # dynamically, so we control the loop count
         if not len(contents_names):
             #Contents empty so far, set pointer for any new contents
             first_namex = savex
-        
+                    
         #Make uncased versions for comparisons    
         u_base_names = uncase(base_names)
         u_contents_names = uncase(contents_names)        
@@ -308,13 +308,13 @@ while contentx < len(contents)-1:  # dynamically, so we control the loop count
                     for ib in range(len(base_names)):
                         if not u_base_names[ib] in u_contents_names:
                             #found missing section - add to contents
-                            contents_names[ib+1:ib+1] = [base_names[ib]]
-                            u_contents_names = uncase(contents_names)
                             if contents_names == []:
                                 ibx = savex+ib
                             else:
                                 ibx = first_namex+ib
-                            contents[ibx:ibx] = ['* '+base_names[ib]+'\n']
+                            contents_names[ib+1:ib+1] = [base_names[ib]]
+                            u_contents_names = uncase(contents_names) 
+                            contents[ibx+1:ibx+1] = ['* '+base_names[ib]+'\n']
                             contentx += 1  #advance outer loop counter
                             contents_changed = True
                             logit("Added '"+base_names[ib]+"' to '"+dname+"' contents")
@@ -470,6 +470,11 @@ while contentx < len(contents)-1:  # dynamically, so we control the loop count
 ######### Rewrite contents if necessary
 
 if contents_changed:
+    #ensure there is a blank line before each link
+    for i in range(1,len(contents)):
+        if "[" in contents[i]:
+            contents[i] = "\n"+contents[i]
+    #and write it back                   
     wf("Contents.md", contents)
     contents_changed = False             
              
