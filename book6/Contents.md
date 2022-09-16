@@ -39,9 +39,9 @@ This is the current list of contents. It will change as the book evolves.
 * Deployment in the home
 * Deployment in the enterprise
 
-[6. Management and operations](6.%20Management%20and%20operations/6.%20Management%20and%20operations.md)
+[6. Management and Operations](6.%20Management%20and%20Operations/6.%20Management%20and%20Operations.md)
 
-[7. Case studies](7.%20Case%20studies/7.%20Case%20studies.md)
+[7. Case Studies](7.%20Case%20Studies/7.%20Case%20Studies.md)
 
 [8. Further Reading](8.%20Further%20Reading/8.%20Further%20Reading.md)
 
