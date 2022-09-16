@@ -91,6 +91,7 @@ def rf(f):
 
 def wf(f,l):
     """Write list of strings to file"""
+    global written
     file = open(f, "w",encoding='utf-8')
     for line in l:
         file.write(line)
@@ -212,7 +213,7 @@ while contentx < len(contents)-1:  # dynamically, so we control the loop count
     cline = contents[contentx]
     if cline[0] == "[" and cline[1].isdigit():
         # Found a decorated chapter title - extract directory name
-        dname = cline.split("(")[1][:-2].replace("%20"," ")
+        dname = cline.split("(")[1].split("/")[0].replace("%20"," ")
         chapters.append(dname)
         #Need to create directory?
         if not os.path.isdir(dname):
@@ -482,7 +483,7 @@ else:
     warn = ""
 
 if written:
-    wrote = str(written)+"file(s) written.\n"
+    wrote = str(written)+" file(s) written.\n"
 else:
     wrote = "Clean run.\n"
 
