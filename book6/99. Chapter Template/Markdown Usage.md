@@ -24,8 +24,8 @@ since they are unknown to GitHub's built-in markdown.
 
 Tests:
 
-Do this [RFC8200](https://www.rfc-editor.org/info/RFC8200)          to refer to an RFC
-[BCP198](https://www.rfc-editor.org/info/BCP198)          to refer to an IETF Best Current Practice
+Do this [RFC8200](https://www.rfc-editor.org/info/rfc8200)          to refer to an RFC
+[BCP198](https://www.rfc-editor.org/info/bcp198)          to refer to an IETF Best Current Practice
 [Last Section](Last%20Section.md)    to refer to a section in the present chapter
 [2. Addresses](../2.%20IPv6%20Basic%20Technology/Addresses.md) to refer to a section in another chapter
 
