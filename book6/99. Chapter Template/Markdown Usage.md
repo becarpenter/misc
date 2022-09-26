@@ -15,20 +15,13 @@ but a feature adapted from kramdown is also available, e.g.
 ~~~
   {{{RFC8200}}}           to refer to an RFC
   {{{BCP198}}}            to refer to an IETF Best Current Practice
-  {{{Last Section}}}    to refer to a section in the present chapter
-  {{{2. Addresses}}} to refer to a section in another chapter
+  {{{STD86}}}             to refer to an IETF Internet Standard
+  {{{Last Section}}}      to refer to a section in the present chapter
+  {{{2. Addresses}}}      to refer to a section in another chapter                                                (the single space is required) 
 ~~~
 
 Such references will be fixed up by the next run of makeBook,
 since they are unknown to GitHub's built-in markdown.
-
-Tests:
-
-Do this [RFC8200](https://www.rfc-editor.org/info/rfc8200)          to refer to an RFC
-[BCP198](https://www.rfc-editor.org/info/bcp198)          to refer to an IETF Best Current Practice
-[Last Section](Last%20Section.md)    to refer to a section in the present chapter
-[2. Addresses](../2.%20IPv6%20Basic%20Technology/Addresses.md) to refer to a section in another chapter
-
 
 Diagrams can be ASCII art when applicable, e.g.:
 ~~~
