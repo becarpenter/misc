@@ -7,7 +7,7 @@ IPv6 usage in the Internet continues to grow.
 
 Test \[[RFC8200](https://www.rfc-editor.org/info/rfc8200)] vs [RFC8200](https://www.rfc-editor.org/info/rfc8200)
 
-Test [2. Addresses](../2.%20IPv6%20Basic%20Technology/Addresses.md) vs \[[2. Addresses](../2.%20IPv6%20Basic%20Technology/Addresses.md)]
+Test [2. Addresses](../2.%20IPv6%20Basic%20Technology/Addresses.md) vs \[[2. Addresses](../2.%20IPv6%20Basic%20Technology/Addresses.md)].
 
 Test mismatch \[[RFC1234](https://www.rfc-editor.org/info/rfc1234) and [RFC4321](https://www.rfc-editor.org/info/rfc4321)].
 
