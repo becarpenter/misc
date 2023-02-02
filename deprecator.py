@@ -70,6 +70,8 @@
 ########################################################
 ########################################################"""
 
+#Version 2 - uses RIPE Atlas anchor probes as target
+
 import os
 import ctypes
 import sys
@@ -78,6 +80,12 @@ import ipaddress
 import subprocess
 import time
 import random # used for testing
+try:
+    from ripe.atlas.cousteau import Probe
+except:
+    print("Could not import Probe",
+        "\nPlease install ripe.atlas.cousteau with pip or apt-get.")
+    askexit()
 
 class depaddr:
     """Deprecated address"""
@@ -214,7 +222,6 @@ testing = False
 _l = input("Simulate random failures? Y/N: ")
 if _l:
     if _l[0] == "Y" or _l[0] == "y":
-        prng = random.SystemRandom()
         testing = True
 
 
@@ -228,6 +235,7 @@ if my_os == "win32":
     if not ctypes.windll.shell32.IsUserAnAdmin():
         print("Cannot run without Administrator privilege.")
         askexit()
+    print("Note: on Windows, anomalies have been seen when ULAs active.")
 else:
     if my_os not in ("linux", "linux2"):
         print("Platform", my_os, "not yet supported.")
@@ -244,22 +252,32 @@ else:
         print("Could not import netifaces",
               "\nPlease install netifaces with pip or apt-get.")
         askexit()
-
-target = "www.google.com"
-_l = input("Probe target's FQDN? (press ENTER for default): ")
+        
+prng = random.SystemRandom()
+target = None
+_l = input("Probe target's FQDN or IPv6 address?\n(press ENTER for default): ")
 if _l:
     target = _l
     if not tryping("::"):
-        print(_l, "is not pingable, using default.")
-        target = "www.google.com"
-        
+        print(_l, "is not pingable.")
+        target = None
 
+if not target:
+    print("Choosing probe target; may take a minute...")
+    for i in range(1,10):
+        tryp = prng.randint(6000, 7200)
+        probe = Probe(id=tryp)
+        if probe.is_anchor and probe.status == 'Connected' and probe.address_v6:
+            target = probe.address_v6
+            if tryping("::"):
+                break      
+if not target:
+    target = "www.google.com" #ultimate fallback only
 print("Using", target, "as probe target") 
 
 guas = [] # list of guas most recently found
 deps = [] # list of currently deprecated addresses
 loops = 1 # could be used for testing
-
 
 while True:
     refresh_guas()
