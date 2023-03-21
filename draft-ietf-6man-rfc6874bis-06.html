@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>Representing IPv6 Zone Identifiers in Address Literals and Uniform Resource Identifiers</title>
+<meta content="Brian Carpenter" name="author">
+<meta content="Stuart Cheshire" name="author">
+<meta content="Robert M. Hinden" name="author">
+<meta content="
+       This document describes how the zone identifier of an IPv6 scoped address, defined
+as &lt;zone_id&gt; in the IPv6 Scoped Address Architecture (RFC 4007), can be
+represented in a literal IPv6 address and in a Uniform Resource Identifier 
+that includes such a literal address. It updates the URI Generic Syntax
+and Internationalized Resource Identifier
+specifications (RFC 3986, RFC 3987) accordingly, and obsoletes RFC 6874.
+
+ 
+    " name="description">
+<meta content="xml2rfc 3.17.0" name="generator">
+<meta content="draft-ietf-6man-rfc6874bis-06X" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.17.0
+    Python 3.10.6
+    appdirs 1.4.4
+    ConfigArgParse 1.5.3
+    google-i18n-address 2.5.2
+    html5lib 1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.2
+    lxml 4.9.2
+    MarkupSafe 2.1.2
+    pycountry 22.3.5
+    PyYAML 6.0
+    requests 2.28.2
+    setuptools 59.6.0
+    six 1.16.0
+    wcwidth 0.2.6
+    weasyprint 58.1
+-->
+<link href="/usr/src/app/tmp/da865aec-6aae-49b7-822a-aa6fdd712d62/draft-ietf-6man-rfc6874bis-06.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">/*
+
+  NOTE: Changes at the bottom of this file overrides some earlier settings.
+
+  Once the style has stabilized and has been adopted as an official RFC style,
+  this can be consolidated so that style settings occur only in one place, but
+  for now the contents of this file consists first of the initial CSS work as
+  provided to the RFC Formatter (xml2rfc) work, followed by itemized and
+  commented changes found necessary during the development of the v3
+  formatters.
+
+*/
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans'); /* Sans-serif */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif'); /* Serif (print) */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono'); /* Monospace */
+
+:root {
+  --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+  --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+}
+
+@viewport {
+  zoom: 1.0;
+  width: extend-to-zoom;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+/* general and mobile first */
+html {
+}
+body {
+  max-width: 90%;
+  margin: 1.5em auto;
+  color: #222;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+.ears {
+  display: none;
+}
+
+/* headings */
+#title, h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+  font-weight: bold;
+  line-height: 1.3;
+}
+#title {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 0.5em 0;
+  padding: 1em 0 0.5em;
+}
+.author {
+  padding-bottom: 4px;
+}
+h1 {
+  font-size: 26px;
+  margin: 1em 0;
+}
+h2 {
+  font-size: 22px;
+  margin-top: -20px;  /* provide offset for in-page anchors */
+  padding-top: 33px;
+}
+h3 {
+  font-size: 18px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h4 {
+  font-size: 16px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h5, h6 {
+  font-size: 14px;
+}
+#n-copyright-notice {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+/* general structure */
+p {
+  padding: 0;
+  margin: 0 0 1em 0;
+  text-align: left;
+}
+div, span {
+  position: relative;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+svg[font-family~="serif" i], svg [font-family~="serif" i] {
+  font-family: var(--font-serif);
+}
+svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+  font-family: var(--font-sans);
+}
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  display: table;
+  border: none;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 1em 2em;
+}
+ol ol, ul ul, ol ul, ul ol {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+ul.ulBare, li.ulBare {
+  margin-left: 0em !important;
+}
+ul.compact, .ulCompact,
+ol.compact, .olCompact {
+  line-height: 100%;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+/* 
+dl.nohang > dt {
+  float: none;
+}
+*/
+dl > dd {
+  margin-bottom: .8em;
+  min-height: 1.3em;
+}
+dl.compact > dd, .dlCompact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+/* links */
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #22e; /* Arlen: WCAG 2019 */
+}
+a[href]:hover {
+  background-color: #f2f2f2;
+}
+figcaption a[href],
+a[href].selfRef,
+.iref + a[href].internal {
+  color: #222;
+}
+/* XXX probably not this:
+a.selfRef:hover {
+  background-color: transparent;
+  cursor: default;
+} */
+
+/* Figures */
+tt, code, pre {
+  background-color: #f9f9f9;
+  font-family: var(--font-mono);
+}
+pre {
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 1em;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption {
+  font-style: italic;
+  margin: 0 0 1em 0;
+}
+@media screen {
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    max-width: calc(100% - 22px);
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 1.2em 2em;
+}
+blockquote {
+  background-color: #f9f9f9;
+  color: #111; /* Arlen: WCAG 2019 */
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5em 0.75em;
+}
+th {
+  text-align: left;
+  background-color: #e9e9e9;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f5f5f5;
+}
+table caption {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+table p {
+  /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
+     be allowed within tables more generally, it would be far better to select on a class. */
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  color: #666; /* Arlen: AHDJ 2019 */
+  text-decoration: none;
+  visibility: hidden;
+  user-select: none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+@media screen {
+  aside:hover > a.pilcrow,
+  p:hover > a.pilcrow,
+  blockquote:hover > a.pilcrow,
+  div:hover > a.pilcrow,
+  li:hover > a.pilcrow,
+  pre:hover > a.pilcrow {
+    visibility: visible;
+  }
+  a.pilcrow:hover {
+    background-color: transparent;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.bcp14 {
+  font-variant: small-caps;
+}
+
+.role {
+  font-variant: all-small-caps;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: 0.9em;
+}
+#identifiers dt {
+  width: 3em;
+  clear: left;
+}
+#identifiers dd {
+  float: left;
+  margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    float: none;
+  }
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #666; /* Arlen: WCAG 2019 */
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc  {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+nav.toc ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+nav.toc li {
+  line-height: 1.3em;
+  margin: 0.75em 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 7em;
+}
+.references dd {
+  margin-left: 8em;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+.index ul {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+.index ul ul {
+  margin: 0;
+}
+.index li {
+  margin: 0;
+  text-indent: -2em;
+  padding-left: 2em;
+  padding-bottom: 5px;
+}
+.indexIndex {
+  margin: 0.5em 0 1em;
+}
+.index a {
+  font-weight: 700;
+}
+/* make the index two-column on all but the smallest screens */
+@media (min-width: 600px) {
+  .index ul {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+  }
+  .index ul ul {
+    -moz-column-count: 1;
+    -moz-column-gap: 0;
+  }
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  font-family: var(--font-sans);
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+
+/* temporary notes */
+.rfcEditorRemove::before {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  padding: 0.2em;
+  content: "The RFC Editor will remove this note";
+  color: #9e2a00; /* Arlen: WCAG 2019 */
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+}
+.rfcEditorRemove {
+  position: relative;
+  padding-top: 1.8em;
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  border-radius: 3px;
+}
+.cref {
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 1023px) {
+  body {
+    padding-top: 2em;
+  }
+  #title {
+    padding: 1em 0;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: -18px;  /* provide offset for in-page anchors */
+    padding-top: 38px;
+  }
+  #identifiers dd {
+    max-width: 60%;
+  }
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    border-bottom: 1px solid #ccc;
+  }
+  #toc h2 {
+    margin: -1px 0 0 0;
+    padding: 4px 0 4px 6px;
+    padding-right: 1em;
+    min-width: 190px;
+    font-size: 1.1em;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 6px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 1024px) {
+  body {
+    max-width: 724px;
+    margin: 42px auto;
+    padding-left: 1.5em;
+    padding-right: 29em;
+  }
+  #toc {
+    position: fixed;
+    top: 42px;
+    right: 42px;
+    width: 25%;
+    margin: 0;
+    padding: 0 1em;
+    z-index: 1;
+  }
+  #toc h2 {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 0;
+    overflow: auto;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre {
+    page-break-inside: avoid;
+  }
+  figure {
+    overflow: scroll;
+  }
+  .breakable pre {
+    break-inside: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  h2+*, h3+*, h4+*, h5+*, h6+* {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+/* This is commented out here, as the string-set: doesn't
+   pass W3C validation currently */
+/*
+.ears thead .left {
+  string-set: ears-top-left content();
+}
+
+.ears thead .center {
+  string-set: ears-top-center content();
+}
+
+.ears thead .right {
+  string-set: ears-top-right content();
+}
+
+.ears tfoot .left {
+  string-set: ears-bottom-left content();
+}
+
+.ears tfoot .center {
+  string-set: ears-bottom-center content();
+}
+
+.ears tfoot .right {
+  string-set: ears-bottom-right content();
+}
+*/
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+  /* The following is commented out here, but set appropriately by in code, as
+     the content depends on the document */
+  /*
+  @top-left {
+    content: 'Internet-Draft';
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-left {
+    content: string(ears-top-left);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-center {
+    content: string(ears-top-center);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-right {
+    content: string(ears-top-right);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @bottom-left {
+    content: string(ears-bottom-left);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-center {
+    content: string(ears-bottom-center);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-right {
+      content: '[Page ' counter(page) ']';
+      vertical-align: top;
+      border-top: solid 1px #ccc;
+  }
+  */
+
+}
+
+/* Changes introduced to fix issues found during implementation */
+/* Make sure links are clickable even if overlapped by following H* */
+a {
+  z-index: 2;
+}
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Leave room in document info to show Internet-Draft on one line */
+#identifiers dt {
+  width: 8em;
+}
+
+/* Don't waste quite as much whitespace between label and value in doc info */
+#identifiers dd {
+  margin-left: 1em;
+}
+
+/* Give floating toc a background color (needed when it's a div inside section */
+#toc {
+  background-color: white;
+}
+
+/* Make the collapsed ToC header render white on gray also when it's a link */
+@media screen and (max-width: 1023px) {
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+}
+
+/* Give the bottom of the ToC some whitespace */
+@media screen and (min-width: 1024px) {
+  #toc {
+    padding: 0 0 1em 1em;
+  }
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* prevent monospace from becoming overly large */
+tt, code, pre {
+  font-size: 95%;
+}
+
+/* Fix the height/width aspect for ascii art*/
+.sourcecode pre,
+.art-text pre {
+  line-height: 1.12;
+}
+
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin-right: 0.5em;
+}
+
+/* Fix the dl styling to match the RFC 7992 attributes */
+dl > dt,
+dl.dlParallel > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+
+/* Provide styling for table cell text alignment */
+table td.text-left,
+table th.text-left {
+  text-align: left;
+}
+table td.text-center,
+table th.text-center {
+  text-align: center;
+}
+table td.text-right,
+table th.text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 30em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Provide table alignment support.  We can't use the alignX classes above
+   since they do unwanted things with caption and other styling. */
+table.right {
+ margin-left: auto;
+ margin-right: 0;
+}
+table.center {
+ margin-left: auto;
+ margin-right: auto;
+}
+table.left {
+ margin-left: 0;
+ margin-right: auto;
+}
+
+/* Give the table caption label the same styling as the figcaption */
+caption a[href] {
+  color: #222;
+}
+
+@media print {
+  .toplink {
+    display: none;
+  }
+
+  /* avoid overwriting the top border line with the ToC header */
+  #toc {
+    padding-top: 1px;
+  }
+
+  /* Avoid page breaks inside dl and author address entries */
+  .vcard {
+    page-break-inside: avoid;
+  }
+
+}
+/* Tweak the bcp14 keyword presentation */
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+/* Tweak the invisible space above H* in order not to overlay links in text above */
+ h2 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 31px;
+ }
+ h3 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+ h4 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+/* Float artwork pilcrow to the right */
+@media screen {
+  .artwork a.pilcrow {
+    display: block;
+    line-height: 0.7;
+    margin-top: 0.15em;
+  }
+}
+/* Make pilcrows on dd visible */
+@media screen {
+  dd:hover > a.pilcrow {
+    visibility: visible;
+  }
+}
+/* Make the placement of figcaption match that of a table's caption
+   by removing the figure's added bottom margin */
+.alignLeft.art-text,
+.alignCenter.art-text,
+.alignRight.art-text {
+   margin-bottom: 0;
+}
+.alignLeft,
+.alignCenter,
+.alignRight {
+  margin: 1em 0 0 0;
+}
+/* In print, the pilcrow won't show on hover, so prevent it from taking up space,
+   possibly even requiring a new line */
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+/* Styling for the external metadata */
+div#external-metadata {
+  background-color: #eee;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  display: none;
+}
+div#internal-metadata {
+  padding: 0.5em;                       /* to match the external-metadata padding */
+}
+/* Styling for title RFC Number */
+h1#rfcnum {
+  clear: both;
+  margin: 0 0 -1em;
+  padding: 1em 0 0 0;
+}
+/* Make .olPercent look the same as <ol><li> */
+dl.olPercent > dd {
+  margin-bottom: 0.25em;
+  min-height: initial;
+}
+/* Give aside some styling to set it apart */
+aside {
+  border-left: 1px solid #ddd;
+  margin: 1em 0 1em 2em;
+  padding: 0.2em 2em;
+}
+aside > dl,
+aside > ol,
+aside > ul,
+aside > table,
+aside > p {
+  margin-bottom: 0.5em;
+}
+/* Additional page break settings */
+@media print {
+  figcaption, table caption {
+    page-break-before: avoid;
+  }
+}
+/* Font size adjustments for print */
+@media print {
+  body  { font-size: 10pt;      line-height: normal; max-width: 96%; }
+  h1    { font-size: 1.72em;    padding-top: 1.5em; } /* 1*1.2*1.2*1.2 */
+  h2    { font-size: 1.44em;    padding-top: 1.5em; } /* 1*1.2*1.2 */
+  h3    { font-size: 1.2em;     padding-top: 1.5em; } /* 1*1.2 */
+  h4    { font-size: 1em;       padding-top: 1.5em; }
+  h5, h6 { font-size: 1em;      margin: initial; padding: 0.5em 0 0.3em; }
+}
+/* Sourcecode margin in print, when there's no pilcrow */
+@media print {
+  .artwork,
+  .artwork > pre,
+  .sourcecode {
+    margin-bottom: 1em;
+  }
+}
+/* Avoid narrow tables forcing too narrow table captions, which may render badly */
+table {
+  min-width: 20em;
+}
+/* ol type a */
+ol.type-a { list-style-type: lower-alpha; }
+ol.type-A { list-style-type: upper-alpha; }
+ol.type-i { list-style-type: lower-roman; }
+ol.type-I { list-style-type: lower-roman; }
+/* Apply the print table and row borders in general, on request from the RPC,
+and increase the contrast between border and odd row background slightly */
+table {
+  border: 1px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+}
+tr {
+  break-inside: avoid;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f8f8f8;
+}
+/* Use style rules to govern display of the TOC. */
+@media screen and (max-width: 1023px) {
+  #toc nav { display: none; }
+  #toc.active nav { display: block; }
+}
+/* Add support for keepWithNext */
+.keepWithNext {
+  break-after: avoid-page;
+  break-after: avoid-page;
+}
+/* Add support for keepWithPrevious */
+.keepWithPrevious {
+  break-before: avoid-page;
+}
+/* Change the approach to avoiding breaks inside artwork etc. */
+figure, pre, table, .artwork, .sourcecode  {
+  break-before: auto;
+  break-after: auto;
+}
+/* Avoid breaks between <dt> and <dd> */
+dl {
+  break-before: auto;
+  break-inside: auto;
+}
+dt {
+  break-before: auto;
+  break-after: avoid-page;
+}
+dd {
+  break-before: avoid-page;
+  break-after: auto;
+  orphans: 3;
+  widows: 3
+}
+span.break, dd.break {
+  margin-bottom: 0;
+  min-height: 0;
+  break-before: auto;
+  break-inside: auto;
+  break-after: auto;
+}
+/* Undo break-before ToC */
+@media print {
+  #toc {
+    break-before: auto;
+  }
+}
+/* Text in compact lists should not get extra bottom margin space,
+   since that would makes the list not compact */
+ul.compact p, .ulCompact p,
+ol.compact p, .olCompact p {
+ margin: 0;
+}
+/* But the list as a whole needs the extra space at the end */
+section ul.compact,
+section .ulCompact,
+section ol.compact,
+section .olCompact {
+  margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+}
+/* The tt and code background above interferes with for instance table cell
+   backgrounds.  Changed to something a bit more selective. */
+tt, code {
+  background-color: transparent;
+}
+p tt, p code, li tt, li code {
+  background-color: #f8f8f8;
+}
+/* Tweak the pre margin -- 0px doesn't come out well */
+pre {
+   margin-top: 0.5px;
+}
+/* Tweak the compact list text */
+ul.compact, .ulCompact,
+ol.compact, .olCompact,
+dl.compact, .dlCompact {
+  line-height: normal;
+}
+/* Don't add top margin for nested lists */
+li > ul, li > ol, li > dl,
+dd > ul, dd > ol, dd > dl,
+dl > dd > dl {
+  margin-top: initial;
+}
+/* Elements that should not be rendered on the same line as a <dt> */
+/* This should match the element list in writer.text.TextWriter.render_dl() */
+dd > div.artwork:first-child,
+dd > aside:first-child,
+dd > figure:first-child,
+dd > ol:first-child,
+dd > div.sourcecode:first-child,
+dd > table:first-child,
+dd > ul:first-child {
+  clear: left;
+}
+/* fix for weird browser behaviour when <dd/> is empty */
+dt+dd:empty::before{
+  content: "\00a0";
+}
+/* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+li > p {
+  margin-bottom: 0.5em
+}
+/* Don't let p margin spill out from inside list items */
+li > p:last-of-type:only-child {
+  margin-bottom: 0;
+}
+</style>
+<link href="rfc-local.css" rel="stylesheet" type="text/css">
+<script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+</head>
+<body class="xml2rfc">
+<script src="metadata.min.js"></script>
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">IPv6 Zone IDs in URIs</td>
+<td class="right">March 2023</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Carpenter, et al.</td>
+<td class="center">Expires 22 September 2023</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">6MAN</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-ietf-6man-rfc6874bis-06X</dd>
+<dt class="label-obsoletes">Obsoletes:</dt>
+<dd class="obsoletes">
+<a href="https://www.rfc-editor.org/rfc/rfc6874" class="eref">6874</a> (if approved)</dd>
+<dt class="label-updates">Updates:</dt>
+<dd class="updates">
+<a href="https://www.rfc-editor.org/rfc/rfc3986" class="eref">3986</a>, <a href="https://www.rfc-editor.org/rfc/rfc3987" class="eref">3987</a> (if approved)</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2023-03-21" class="published">21 March 2023</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Standards Track</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2023-09-22">22 September 2023</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">B. Carpenter</div>
+<div class="org">Univ. of Auckland</div>
+</div>
+<div class="author">
+      <div class="author-name">S. Cheshire</div>
+<div class="org">Apple Inc.</div>
+</div>
+<div class="author">
+      <div class="author-name">R. Hinden</div>
+<div class="org">Check Point Software</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">Representing IPv6 Zone Identifiers in Address Literals and Uniform Resource Identifiers</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">This document describes how the zone identifier of an IPv6 scoped address, defined
+as &lt;zone_id&gt; in the IPv6 Scoped Address Architecture (RFC 4007), can be
+represented in a literal IPv6 address and in a Uniform Resource Identifier 
+that includes such a literal address. It updates the URI Generic Syntax
+and Internationalized Resource Identifier
+specifications (RFC 3986, RFC 3987) accordingly, and obsoletes RFC 6874.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-discussion-venue">
+<a href="#name-discussion-venue" class="section-name selfRef">Discussion Venue</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Discussion of this document takes place on the
+  6MAN mailing list (ipv6@ietf.org),
+  which is archived at <a href="https://mailarchive.ietf.org/arch/browse/ipv6/">https://mailarchive.ietf.org/arch/browse/ipv6/</a>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 22 September 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2023 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-issues-with-implementing-rf" class="internal xref">Issues with Implementing RFC 6874</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-specification" class="internal xref">Specification</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-scope-and-deployment" class="internal xref">Scope and Deployment</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-uri-parsers" class="internal xref">URI Parsers</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-options-considered" class="internal xref">Options Considered</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-change-log" class="internal xref">Change log</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="intro">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">The Uniform Resource Identifier (URI) syntax specification <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> defined how a
+literal IPv6 address can be represented in the "host" part of a URI.
+Later, the IPv6 Scoped Address Architecture specification <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span> extended
+the text representation of limited-scope IPv6 addresses such that a zone identifier may be concatenated
+to a literal address, for purposes described in that specification. Zone identifiers are especially
+useful in contexts in which literal addresses are typically used, for example, during fault diagnosis,
+when it may be essential to specify which interface is used for sending to a link-local address. 
+It should be noted that zone identifiers have purely local meaning within the node in which
+they are defined, usually being the same as IPv6 interface names. They are completely meaningless
+for any other node. Today, they are meaningful only when attached to link-local addresses,
+but it is possible that other uses might be defined in the future.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">The IPv6 Scoped Address Architecture specification
+      does not specify how zone identifiers are to be represented
+in URIs. Practical experience has shown that this feature is useful or necessary, 
+ in various use cases, including the following:<a href="#section-1-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-1-3">
+   <li id="section-1-3.1">A web browser may be used for simple debugging actions 
+   involving link-local addresses on a host with more than one active
+   link interface. For example, the existence of a device may today be checked
+   via "ping fe80::1234%eth0" but not via "https://[fe80::1234%eth0]".<a href="#section-1-3.1" class="pilcrow">¶</a>
+</li>
+        <li id="section-1-3.2">A web browser must sometimes be used to configure or reconfigure a
+   device which only has a link-local address and whose only
+   configuration tool is a web server, again in a host with
+   more than one active link interface. For example, a typical
+   home router may today be configured via "http://192.168.178.1"
+   but not via "http://[fe80::1%eth0]".<a href="#section-1-3.2" class="pilcrow">¶</a>
+</li>
+        <li id="section-1-3.3">The Apple and open-source CUPS printing
+   mechanism <span>[<a href="#CUPS" class="cite xref">CUPS</a>]</span> <span>[<a href="#OP-CUPS" class="cite xref">OP-CUPS</a>]</span>
+   uses an HTTP-based protocol <span>[<a href="#RFC3510" class="cite xref">RFC3510</a>]</span><span>[<a href="#RFC7472" class="cite xref">RFC7472</a>]</span>
+   to establish link-local relationships, so requires the specification of the
+   relevant interface.<a href="#section-1-3.3" class="pilcrow">¶</a>
+</li>
+        <li id="section-1-3.4">The Microsoft Web Services for Devices (WSD) virtual printer
+   port mechanism can generate an IPv6 link-local URL such as
+   "http://[fe80::823b:f9ff:fe7b:d9dc%10]:80/WebServices/Device"
+   in which the zone identifier is present, but is not recognized by
+   any current browser.<a href="#section-1-3.4" class="pilcrow">¶</a>
+</li>
+      </ol>
+<p id="section-1-4">For these use cases, it is highly desirable that a complete IPv6 link-local
+address can be cut and pasted from one context (such as the output
+from a system command) to another (such as a browser dialogue box). Since such
+addresses may include quite long hexadecimal strings, any solution except
+cut-and-paste is highly error prone.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">The use cases listed above apply to relatively simple actions
+on end systems, not to network infrastructure devices. The latter may
+have large numbers of interfaces, which are
+commonly named for network management purposes in styles such as
+"Ethernet1/0/1" or "ge-0/0/0.0", reflecting the hardware structure and
+depending on the manufacturer.
+The present specification does not intend to support such names,
+which commonly involve upper case and non-alphanumeric characters.
+Generally speaking they are handled by various network management
+mechanisms and specialized commands, so there is no requirement
+to support them in URIs.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">As IPv6 deployment becomes widespread, the lack of a solution for
+handling complete link-local addresses in web browsers is becoming an acute
+problem for increasing numbers of operational and support personnel.
+It will become critical as IPv6-only networks, with no native
+IPv4 support, appear.
+This is the principal reason for documenting this requirement and its solution now.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">It should be noted that whereas some operating systems and network APIs
+support a default zone identifier as described in <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span>,
+others do not, and for them an appropriate URI syntax is particularly important.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-8">In the past, some browser versions directly accepted the IPv6 Scoped Address
+syntax
+for scoped IPv6 addresses embedded in URIs, i.e., they were coded to
+interpret a "%" sign following the literal address as introducing a zone
+identifier, instead of introducing two hexadecimal
+characters representing some percent-encoded octet as explained in
+Section 2.1 of <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>. Clearly, 
+interpreting the "%" sign as introducing a zone identifier is very convenient
+for users, although it is not supported by
+the URI syntax in RFC 3986 or the Internationalized Resource Identifier (IRI)
+syntax in <span>[<a href="#RFC3987" class="cite xref">RFC3987</a>]</span>.
+Therefore, this document updates RFC 3986 and RFC 3987 by adding syntax to allow a zone identifier
+to be included in a literal IPv6 address within a URI.<a href="#section-1-8" class="pilcrow">¶</a></p>
+<p id="section-1-9">It should be noted that in contexts other than a user interface, a zone identifier is mapped into
+a numeric zone index or interface number. The MIB textual convention InetZoneIndex <span>[<a href="#RFC4001" class="cite xref">RFC4001</a>]</span> and the
+socket interface <span>[<a href="#RFC3493" class="cite xref">RFC3493</a>]</span> define this as a 32-bit unsigned integer.
+(However, note that interface numbers are limited to positive signed 32-bit
+integers (see InterfaceIndex defined in <span>[<a href="#RFC2863" class="cite xref">RFC2863</a>]</span> and if-index
+defined in <span>[<a href="#RFC8343" class="cite xref">RFC8343</a>]</span>) while the zone index allows for unsigned
+32-bit integers.)<a href="#section-1-9" class="pilcrow">¶</a></p>
+<p id="section-1-10">The mapping
+between the human-readable zone identifier string and the numeric value is a host-specific
+function that varies between operating systems. The present document is concerned only
+with the human-readable string.<a href="#section-1-10" class="pilcrow">¶</a></p>
+<p id="section-1-11">Several alternative solutions were considered while this document was developed. Appendix
+A briefly describes the various options and their advantages and disadvantages.<a href="#section-1-11" class="pilcrow">¶</a></p>
+<p id="section-1-12">This document obsoletes its predecessor <span>[<a href="#RFC6874" class="cite xref">RFC6874</a>]</span> by greatly
+simplifying its recommendations and requirements for URI parsers.
+Its effect on the formal URI syntax <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> is different
+from that of RFC 6874.<a href="#section-1-12" class="pilcrow">¶</a></p>
+<p id="section-1-13">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and
+   only when, they appear in all capitals, as shown here.<a href="#section-1-13" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="issues">
+<section id="section-2">
+      <h2 id="name-issues-with-implementing-rf">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-issues-with-implementing-rf" class="section-name selfRef">Issues with Implementing RFC 6874</a>
+      </h2>
+<p id="section-2-1">Several issues prevented RFC 6874 being implemented in browsers:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-2-2">
+  <li id="section-2-2.1">There was some disagreement with requiring percent-encoding of the "%" sign preceding a zone identifier.
+  This requirement is dropped in the present document.<a href="#section-2-2.1" class="pilcrow">¶</a>
+</li>
+        <li id="section-2-2.2">The requirement to delete any zone identifier before emitting a URI from the host in an HTTP message
+  was considered both too complex to implement and in violation of normal HTTP practice <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>.
+  This requirement has been dropped from the present document.<a href="#section-2-2.2" class="pilcrow">¶</a>
+</li>
+        <li id="section-2-2.3">The suggestion to pragmatically allow a bare "%" sign when this would be unambiguous was considered both
+  too complex to implement and confusing for users. This suggestion has been dropped from the present document
+  since it is now irrelevant.<a href="#section-2-2.3" class="pilcrow">¶</a>
+</li>
+      </ol>
+</section>
+</div>
+<div id="spec">
+<section id="section-3">
+      <h2 id="name-specification">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-specification" class="section-name selfRef">Specification</a>
+      </h2>
+<p id="section-3-1">According to IPv6 Scoped Address syntax <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span>, a zone identifier is attached to the textual representation of an IPv6
+address by concatenating "%" followed by &lt;zone_id&gt;, where &lt;zone_id&gt; is a string identifying the zone of the address.
+However, the IPv6 Scoped Address Architecture specification gives no precise definition of the character set allowed in &lt;zone_id&gt;.
+There are no rules or de facto standards for this. For example, the first Ethernet interface in a host
+might be called %0, %1, %25, %en1, %eth0, or whatever the implementer happened to choose.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">In a URI, a literal IPv6 address is always embedded between "[" and
+    "]". This document specifies how a zone identifier can be appended to the
+    address. The URI syntax defined by <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> does not allow the
+    presence of a percent ("%") character within an IPv6 address literal. For this
+    reason, it is backwards compatible to allow the use of "%" within an
+    IPv6 address literal as a delimiter only, such that the scoped address
+    "fe80::abcd%en1" would appear in a URI as "http://[fe80::abcd%en1]" or
+    "https://[fe80::abcd%en1]".<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">This use of "%" as a delimiter applies only within an IPv6 address literal, and
+    is irrelevant to and exempt from the percent-encoding mechanism of
+    RFC 3986.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">A zone identifier MUST contain only ASCII characters classified 
+as "unreserved" for use in URIs by RFC 3986. This excludes characters such as
+"/", "]" or even "%" that would complicate parsing. 
+For the avoidance of doubt, note that a zone identifier consisting of "25" or
+starting with "25" is valid and is used in some operating systems. A parser
+MUST NOT apply percent decoding to the IPv6 address literal in a URI,
+including cases such as
+"http://[fe80::abcd%25]" and "http://[fe80::abcd%25xy]".<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">If an operating system uses any characters in zone or interface identifiers
+      that are not in the "unreserved" character set, identifiers including them
+      cannot be used in a URI.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">If an operating system supports case-sensitive zone or interface identifiers,
+      identifiers including upper case letters cannot be used in a URI.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">We now present the corresponding formal syntax.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-8">
+The URI syntax specification in RFC 3986 formally defines the
+IPv6 literal format in ABNF <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span> by the following rule:<a href="#section-3-8" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3-9">
+<pre>
+   IP-literal = "[" ( IPv6address / IPvFuture  ) "]"
+</pre><a href="#section-3-9" class="pilcrow">¶</a>
+</div>
+<p id="section-3-10">To provide support for a zone identifier, 
+the existing syntax of IPv6address is retained, and a zone identifier may be
+added optionally to any literal address. This syntax allows flexibility for unknown future
+uses. The rule quoted above from RFC 3986 is replaced by three rules:<a href="#section-3-10" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3-11">
+<pre>
+   IP-literal = "[" ( IPv6address / IPv6addrz / IPvFuture  ) "]"
+
+   ZoneID = 1*( unreserved )
+
+   IPv6addrz = IPv6address "%" ZoneID
+</pre><a href="#section-3-11" class="pilcrow">¶</a>
+</div>
+<p id="section-3-12">This change also applies to <span>[<a href="#RFC3987" class="cite xref">RFC3987</a>]</span>.<a href="#section-3-12" class="pilcrow">¶</a></p>
+<p id="section-3-13">This syntax fills the gap that is described at the end of Section 11.7 of
+the IPv6 Scoped Address Architecture specification <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span>. It replaces
+and obsoletes the syntax in Section 2 of <span>[<a href="#RFC6874" class="cite xref">RFC6874</a>]</span>.<a href="#section-3-13" class="pilcrow">¶</a></p>
+<p id="section-3-14">The established rules for textual representation of IPv6 addresses <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span> SHOULD be applied in producing URIs.<a href="#section-3-14" class="pilcrow">¶</a></p>
+<p id="section-3-15">RFC 3986 states that URIs have a global scope, but that in some cases their
+interpretation depends on the end-user's context. URIs including a zone identifier are
+an example of this, since the zone identifier is of local significance only. Such a zone identifier cannot be correctly
+interpreted outside the host to which it applies, so it must be treated as an opaque string.<a href="#section-3-15" class="pilcrow">¶</a></p>
+<p id="section-3-16">RFC 3986 also states that the host subcomponent of a URI is case-insensitive and is normalized to lower case.
+     Section 6.2.2.1 of RFC 3986 states unambiguously that
+    "the scheme and host are case-insensitive and therefore should be normalized to
+   lowercase". The mechanism described here will therefore fail for zone identifiers that contain upper case letters,
+    since RFC 4007 implies case-sensitivity. This specification therefore RECOMMENDS the
+    use of lower case letters only when assigning zone identifiers to interfaces.<a href="#section-3-16" class="pilcrow">¶</a></p>
+<p id="section-3-17">RFC 4007 offers guidance on how the zone identifier affects interface/address selection
+inside the IPv6 stack. Note that the behaviour of an IPv6 stack, if it is passed a non-null
+zone index for an address other than link-local, is undefined.<a href="#section-3-17" class="pilcrow">¶</a></p>
+<p id="section-3-18">In cases where the RFC 6874 encoding is currently used between specific software
+components rather than between a browser and a web server, such usage MAY continue indefinitely.<a href="#section-3-18" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="scope">
+<section id="section-4">
+      <h2 id="name-scope-and-deployment">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-scope-and-deployment" class="section-name selfRef">Scope and Deployment</a>
+      </h2>
+<p id="section-4-1">A URI (or IRI) using this format has no meaning outside the scope of the individual host that originates
+it and of the specific layer 2 link concerned. It may in fact be delivered in an HTTP message to a server
+that does not support this format and which will reject the message as invalid. For the diagnostic use cases
+concerned, this is of no importance: an HTTP error response will serve the diagnostic
+purpose of establishing that the link and remote host are operational. The other use cases shown above
+are only meaningful if the remote host also accepts this format; otherwise they
+will fail with an HTTP error response. As a result, this format can be deployed 
+progressively as required, with no wider consequences.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">It is worth noting that there is nothing new about a URI that refers to a local
+resource. URIs referring to local domains under ".local" are normal.
+Any URI such as "https://169.254.0.1" (link-local IPv4, <span>[<a href="#RFC3927" class="cite xref">RFC3927</a>]</span>),
+"https://10.1.1.1" (private IPv4, <span>[<a href="#RFC1918" class="cite xref">RFC1918</a>]</span>),
+or "https://[fd63:45eb:cd14:0:80b2:5c79:62ae:d341]" (IPv6 unique local address, <span>[<a href="#RFC4193" class="cite xref">RFC4193</a>]</span>)
+refers to a local resource and has no meaning off the link or outside the local domain.
+In operating systems with support for a default zone identifier, URLs such
+as "https://[fe80::2e3a:12cd:fea4:dde7]" already work as expected.
+Deployment of support for link-local IPv6 addresses with zone identifiers introduces
+no new principle compared to these four currently operational cases.<a href="#section-4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="browsers">
+<section id="section-5">
+      <h2 id="name-uri-parsers">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-uri-parsers" class="section-name selfRef">URI Parsers</a>
+      </h2>
+<p id="section-5-1">This section discusses how URI (or IRI) parsers, such as those embedded in web browsers,
+       might handle this syntax extension.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">In practice, although parsers respect the established syntax, many are coded
+pragmatically rather than being formally syntax-driven. Typically, IP address
+literals are handled by an explicit code path. Parsers have been
+inconsistent in providing for zone identifiers. Most have no support, but there
+have been examples of ad hoc support. For example, some versions of Firefox allowed the
+use of a zone identifier preceded by a bare "%" character, but 
+this feature was removed for consistency with the established syntax of RFC 3986.
+As another example, some
+versions of Internet Explorer allowed use of a zone identifier preceded by a "%"
+character encoded as "%25", still beyond the syntax allowed by the established
+rules. This
+syntax extension is in fact used internally in the Windows operating system and some
+of its APIs.<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-3">URI parsers SHOULD accept a zone identifier according to the syntax
+      defined in <a href="#spec" class="auto internal xref">Section 3</a>, rather than treating the URI as
+      invalid as they do today. An IPv6 address literal never contains percent-encodings.
+      In terms of Section 2.4 of <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>, the "%" character
+      preceding a zone identifier is acting as a delimiter, not as data.
+      Any code handling percent-encoding or percent-decoding must be aware of this.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4">As noted above, a zone identifier included in a URI has no meaning outside the
+      originating HTTP client node. However, in some use cases,
+      such as CUPS, the host address embedded in the URI 
+      will be reflected back to the client, using exactly the
+      representation of the zone identifier that the client sent.<a href="#section-5-4" class="pilcrow">¶</a></p>
+<p id="section-5-5">The various use cases for the zone identifier syntax will usually require 
+      it to be entered in a browser's input dialogue box. However, URIs including a
+      zone identifier might occur in HTML documents. For example, a diagnostic script
+      in an HTML page
+      might be tailored for a particular host. Because of such usage, it is
+      appropriate for browsers to treat such URIs in the same way whether they
+      are entered in the dialogue box or encountered in an HTML document.<a href="#section-5-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security">
+<section id="section-6">
+      <h2 id="name-security-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-6-1">The security considerations from the URI syntax specification <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>
+      and the IPv6 Scoped Address Architecture specification <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span> apply. 
+      In particular, this URI format creates a specific pathway by which a deceitful zone
+      index might be communicated, as mentioned in the final security consideration
+      of the Scoped Address Architecture specification.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">However, this format is only meaningful for
+      link-local addresses under prefix fe80::/10. It is not necessary for
+      web browsers to verify this, or to validate the zone identifier, because
+      the operating system will do so when the address is passed to
+      the socket API, and return an error code if the zone identifier is invalid.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">A zone identifier in a URI will be revealed to the recipient of an HTTP message
+      containing it (typically in the "Host" field <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>). 
+      A server that receives a zone identifier in an HTTP message or otherwise
+      SHOULD NOT make use of it, for validation of authority or any other purpose,
+      since it has no meaning outside the originating host.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4">Such visibility of the zone identifier to a server is at most
+      a minor security concern, since the information revealed is of
+      local significance only and will be exploitable only if both the client host
+      and the server have both already been compromised.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">Unfortunately there is no formal limit on the length of the zone identifier
+      string in RFC 4007. An implementation SHOULD apply a reasonable
+      length limit when generating a URI, in order
+      to minimize the risk of a buffer overrun. For example, a limit to 16 ASCII characters
+      would correspond to the existing limit on Linux interface names.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">An implementation SHOULD NOT include ASCII NULL characters in a zone identifier
+      string as this could cause inconsistencies in subsequent string processing.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">It is conceivable that this format could be misused to remotely probe a local network
+      configuration or to fingerprint a host. In particular, a script included in an HTML web page could originate
+      HTTP messages intended to determine if a particular link-local address is valid,
+      for example to discover and misuse the address of the first-hop router. However,
+      such attacks are already possible, by probing IPv4 addresses, routeable IPv6 addresses
+      or link-local addresses without a zone identifier. Indeed, with a zone identifier
+      present, the attacker's job is harder because they must also guess the zone
+      identifier itself; the zone identifier increases the search space compared to
+      guessing only the interface identifier. Zone identifiers vary widely between
+      operating systems; in some cases they are easily guessed small integers or conventional
+      names such as "eth0" but in other cases they contain arbitrary characters
+      derived from MAC addresses. In any case, an attacker must discover them
+      before probing any link-local addresses. This argues against the recommendation
+      of <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span> to support a default zone identifier.
+      Nevertheless, the principal defence against scanning attacks remains
+      the 64 bit size of the IPv6 interface identifier <span>[<a href="#RFC7707" class="cite xref">RFC7707</a>]</span>.<a href="#section-6-7" class="pilcrow">¶</a></p>
+<p id="section-6-8">In the case that a zone identifier contains the hexadecimal MAC address
+      of a network interface, it will be revealed to the HTTP recipient and to any
+      observer on the link. Since the MAC address will also be visible
+      in the underlying layer 2 frame, this is not a new exposure.
+      Nevertheless, this method of naming interfaces might be considered
+      to be a privacy issue.<a href="#section-6-8" class="pilcrow">¶</a></p>
+<p id="section-6-9">It should be noted that if a node uses an interface identifier in the outdated
+      Modified EUI format <span>[<a href="#RFC4291" class="cite xref">RFC4291</a>]</span> for its link-local address, the
+      search space for an attacker is very significantly reduced, as discussed in
+      Section 4.1.1.1 of <span>[<a href="#RFC7707" class="cite xref">RFC7707</a>]</span>. The resultant recommendations
+      of <span>[<a href="#RFC8064" class="cite xref">RFC8064</a>]</span> apply to all nodes, including routers, since they
+      ensure that the search space for an attacker is of size 2**64, which is
+      impracticably large.<a href="#section-6-9" class="pilcrow">¶</a></p>
+<p id="section-6-10">Nevertheless, even a Modified EUI link-local address
+      is significantly harder to guess than typical IPv4 addresses for devices such
+      as home routers, which are often included in published documentation.<a href="#section-6-10" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-7">
+      <h2 id="name-iana-considerations">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-7-1">This document makes no request of IANA.<a href="#section-7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-8">
+      <h2 id="name-references">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-8.1">
+        <h3 id="name-normative-references">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3986">[RFC3986]</dt>
+        <dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3987">[RFC3987]</dt>
+        <dd>
+<span class="refAuthor">Duerst, M.</span> and <span class="refAuthor">M. Suignard</span>, <span class="refTitle">"Internationalized Resource Identifiers (IRIs)"</span>, <span class="seriesInfo">RFC 3987</span>, <span class="seriesInfo">DOI 10.17487/RFC3987</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3987">https://www.rfc-editor.org/info/rfc3987</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4007">[RFC4007]</dt>
+        <dd>
+<span class="refAuthor">Deering, S.</span>, <span class="refAuthor">Haberman, B.</span>, <span class="refAuthor">Jinmei, T.</span>, <span class="refAuthor">Nordmark, E.</span>, and <span class="refAuthor">B. Zill</span>, <span class="refTitle">"IPv6 Scoped Address Architecture"</span>, <span class="seriesInfo">RFC 4007</span>, <span class="seriesInfo">DOI 10.17487/RFC4007</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4007">https://www.rfc-editor.org/info/rfc4007</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5234">[RFC5234]</dt>
+        <dd>
+<span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5952">[RFC5952]</dt>
+        <dd>
+<span class="refAuthor">Kawamura, S.</span> and <span class="refAuthor">M. Kawashima</span>, <span class="refTitle">"A Recommendation for IPv6 Address Text Representation"</span>, <span class="seriesInfo">RFC 5952</span>, <span class="seriesInfo">DOI 10.17487/RFC5952</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5952">https://www.rfc-editor.org/info/rfc5952</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8064">[RFC8064]</dt>
+        <dd>
+<span class="refAuthor">Gont, F.</span>, <span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Thaler, D.</span>, and <span class="refAuthor">W. Liu</span>, <span class="refTitle">"Recommendation on Stable IPv6 Interface Identifiers"</span>, <span class="seriesInfo">RFC 8064</span>, <span class="seriesInfo">DOI 10.17487/RFC8064</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8064">https://www.rfc-editor.org/info/rfc8064</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+      <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<section id="section-8.2">
+        <h3 id="name-informative-references">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="CUPS">[CUPS]</dt>
+        <dd>
+<span class="refAuthor">Apple</span>, <span class="refTitle">"Apple CUPS"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://www.cups.org/">https://www.cups.org/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="LITERAL-ZONE">[LITERAL-ZONE]</dt>
+        <dd>
+<span class="refAuthor">Fenner, B.</span> and <span class="refAuthor">M. Dürst</span>, <span class="refTitle">"Formats for IPv6 Scope Zone Identifiers in Literal Address Formats"</span>, <span class="seriesInfo">Work in Progress</span>, <time datetime="2005-10" class="refDate">October 2005</time>. </dd>
+<dd class="break"></dd>
+<dt id="OP-CUPS">[OP-CUPS]</dt>
+        <dd>
+<span class="refAuthor">Sweet, M.</span>, <span class="refTitle">"OpenPrinting CUPS"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://openprinting.github.io/cups/">https://openprinting.github.io/cups/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1918">[RFC1918]</dt>
+        <dd>
+<span class="refAuthor">Rekhter, Y.</span>, <span class="refAuthor">Moskowitz, B.</span>, <span class="refAuthor">Karrenberg, D.</span>, <span class="refAuthor">de Groot, G. J.</span>, and <span class="refAuthor">E. Lear</span>, <span class="refTitle">"Address Allocation for Private Internets"</span>, <span class="seriesInfo">BCP 5</span>, <span class="seriesInfo">RFC 1918</span>, <span class="seriesInfo">DOI 10.17487/RFC1918</span>, <time datetime="1996-02" class="refDate">February 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1918">https://www.rfc-editor.org/info/rfc1918</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2863">[RFC2863]</dt>
+        <dd>
+<span class="refAuthor">McCloghrie, K.</span> and <span class="refAuthor">F. Kastenholz</span>, <span class="refTitle">"The Interfaces Group MIB"</span>, <span class="seriesInfo">RFC 2863</span>, <span class="seriesInfo">DOI 10.17487/RFC2863</span>, <time datetime="2000-06" class="refDate">June 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2863">https://www.rfc-editor.org/info/rfc2863</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3493">[RFC3493]</dt>
+        <dd>
+<span class="refAuthor">Gilligan, R.</span>, <span class="refAuthor">Thomson, S.</span>, <span class="refAuthor">Bound, J.</span>, <span class="refAuthor">McCann, J.</span>, and <span class="refAuthor">W. Stevens</span>, <span class="refTitle">"Basic Socket Interface Extensions for IPv6"</span>, <span class="seriesInfo">RFC 3493</span>, <span class="seriesInfo">DOI 10.17487/RFC3493</span>, <time datetime="2003-02" class="refDate">February 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3493">https://www.rfc-editor.org/info/rfc3493</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3510">[RFC3510]</dt>
+        <dd>
+<span class="refAuthor">Herriot, R.</span> and <span class="refAuthor">I. McDonald</span>, <span class="refTitle">"Internet Printing Protocol/1.1: IPP URL Scheme"</span>, <span class="seriesInfo">RFC 3510</span>, <span class="seriesInfo">DOI 10.17487/RFC3510</span>, <time datetime="2003-04" class="refDate">April 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3510">https://www.rfc-editor.org/info/rfc3510</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3927">[RFC3927]</dt>
+        <dd>
+<span class="refAuthor">Cheshire, S.</span>, <span class="refAuthor">Aboba, B.</span>, and <span class="refAuthor">E. Guttman</span>, <span class="refTitle">"Dynamic Configuration of IPv4 Link-Local Addresses"</span>, <span class="seriesInfo">RFC 3927</span>, <span class="seriesInfo">DOI 10.17487/RFC3927</span>, <time datetime="2005-05" class="refDate">May 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3927">https://www.rfc-editor.org/info/rfc3927</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4001">[RFC4001]</dt>
+        <dd>
+<span class="refAuthor">Daniele, M.</span>, <span class="refAuthor">Haberman, B.</span>, <span class="refAuthor">Routhier, S.</span>, and <span class="refAuthor">J. Schoenwaelder</span>, <span class="refTitle">"Textual Conventions for Internet Network Addresses"</span>, <span class="seriesInfo">RFC 4001</span>, <span class="seriesInfo">DOI 10.17487/RFC4001</span>, <time datetime="2005-02" class="refDate">February 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4001">https://www.rfc-editor.org/info/rfc4001</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4193">[RFC4193]</dt>
+        <dd>
+<span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Unique Local IPv6 Unicast Addresses"</span>, <span class="seriesInfo">RFC 4193</span>, <span class="seriesInfo">DOI 10.17487/RFC4193</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4193">https://www.rfc-editor.org/info/rfc4193</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4291">[RFC4291]</dt>
+        <dd>
+<span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6874">[RFC6874]</dt>
+        <dd>
+<span class="refAuthor">Carpenter, B.</span>, <span class="refAuthor">Cheshire, S.</span>, and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Representing IPv6 Zone Identifiers in Address Literals and Uniform Resource Identifiers"</span>, <span class="seriesInfo">RFC 6874</span>, <span class="seriesInfo">DOI 10.17487/RFC6874</span>, <time datetime="2013-02" class="refDate">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6874">https://www.rfc-editor.org/info/rfc6874</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7472">[RFC7472]</dt>
+        <dd>
+<span class="refAuthor">McDonald, I.</span> and <span class="refAuthor">M. Sweet</span>, <span class="refTitle">"Internet Printing Protocol (IPP) over HTTPS Transport Binding and the 'ipps' URI Scheme"</span>, <span class="seriesInfo">RFC 7472</span>, <span class="seriesInfo">DOI 10.17487/RFC7472</span>, <time datetime="2015-03" class="refDate">March 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7472">https://www.rfc-editor.org/info/rfc7472</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7707">[RFC7707]</dt>
+        <dd>
+<span class="refAuthor">Gont, F.</span> and <span class="refAuthor">T. Chown</span>, <span class="refTitle">"Network Reconnaissance in IPv6 Networks"</span>, <span class="seriesInfo">RFC 7707</span>, <span class="seriesInfo">DOI 10.17487/RFC7707</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7707">https://www.rfc-editor.org/info/rfc7707</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8343">[RFC8343]</dt>
+        <dd>
+<span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"A YANG Data Model for Interface Management"</span>, <span class="seriesInfo">RFC 8343</span>, <span class="seriesInfo">DOI 10.17487/RFC8343</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8343">https://www.rfc-editor.org/info/rfc8343</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9110">[RFC9110]</dt>
+      <dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="seriesInfo">STD 97</span>, <span class="seriesInfo">RFC 9110</span>, <span class="seriesInfo">DOI 10.17487/RFC9110</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9110">https://www.rfc-editor.org/info/rfc9110</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
+<div id="AppendixA">
+<section id="appendix-A">
+      <h2 id="name-options-considered">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-options-considered" class="section-name selfRef">Options Considered</a>
+      </h2>
+<p id="appendix-A-1">The syntax defined above allows a zone identifier to be added to any
+IPv6 address. The 6man WG discussed and rejected an alternative in which
+the existing syntax of IPv6address would be extended by an option
+to add the zone identifier only for the case of link-local addresses. It
+was felt that the solution presented in this document offers more flexibility for
+future uses and is more straightforward to implement.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">The various syntax options considered are now briefly described.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="appendix-A-3">
+<li id="appendix-A-3.1">
+          <p id="appendix-A-3.1.1">Leave the problem unsolved.<a href="#appendix-A-3.1.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.1.2">
+This would mean that per-interface diagnostics would still have to be performed using ping or ping6:<a href="#appendix-A-3.1.2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.1.3">
+   ping fe80::abcd%en1<a href="#appendix-A-3.1.3" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.1.4"> 
+Advantage: works today.<a href="#appendix-A-3.1.4" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.1.5"> 
+Disadvantage: less convenient than using a browser. Leaves some use cases unsatisfied.<a href="#appendix-A-3.1.5" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.1.6"></p>
+</li>
+        <li id="appendix-A-3.2">
+          <p id="appendix-A-3.2.1">Simply use the percent character:<a href="#appendix-A-3.2.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.2.2"> 
+   http://[fe80::abcd%en1]<a href="#appendix-A-3.2.2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.2.3">
+Advantage: allows use of browser; allows cut and paste.<a href="#appendix-A-3.2.3" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.2.4">
+Disadvantage: requires code changes to all URI parsers.<a href="#appendix-A-3.2.4" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.2.5">
+This is the option chosen for standardisation.<a href="#appendix-A-3.2.5" class="pilcrow">¶</a></p>
+</li>
+        <li id="appendix-A-3.3">
+          <p id="appendix-A-3.3.1">Simply use an alternative separator:<a href="#appendix-A-3.3.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.3.2"> 
+    http://[fe80::abcd-en1]<a href="#appendix-A-3.3.2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.3.3">
+Advantage: allows use of browser; simple syntax.<a href="#appendix-A-3.3.3" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.3.4"> 
+Disadvantage: Requires all IPv6 address literal parsers and
+generators to be updated in order to allow simple cut and paste; inconsistent
+with existing tools and practice.<a href="#appendix-A-3.3.4" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.3.5"> 
+Note: The initial proposal for this choice was to use an underscore
+as the separator, but it was noted that this becomes effectively invisible when
+a user interface automatically underlines URLs.<a href="#appendix-A-3.3.5" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.3.6"></p>
+</li>
+        <li id="appendix-A-3.4">
+          <p id="appendix-A-3.4.1">Simply use the "IPvFuture" syntax left open in RFC 3986:<a href="#appendix-A-3.4.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.4.2">
+    http://[v6.fe80::abcd-en1]<a href="#appendix-A-3.4.2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.4.3">
+Advantage: allows use of browser.<a href="#appendix-A-3.4.3" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.4.4">
+Disadvantage: ugly and redundant; doesn't allow simple cut and paste.<a href="#appendix-A-3.4.4" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.4.5"></p>
+</li>
+        <li id="appendix-A-3.5">
+          <p id="appendix-A-3.5.1">Retain the percent character already specified for introducing
+       zone identifiers for IPv6 Scoped Addresses <span>[<a href="#RFC4007" class="cite xref">RFC4007</a>]</span>, and then
+       percent-encode it when it appears in a URI, according to the
+       already-established URI syntax rules <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>:<a href="#appendix-A-3.5.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.5.2">
+   http://[fe80::abcd%25en1]<a href="#appendix-A-3.5.2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.5.3">
+Advantage: allows use of browser; consistent with general URI
+       syntax.<a href="#appendix-A-3.5.3" class="pilcrow">¶</a></p>
+<p id="appendix-A-3.5.4">
+Disadvantage: somewhat ugly and confusing; doesn't allow simple
+       cut and paste.<a href="#appendix-A-3.5.4" class="pilcrow">¶</a></p>
+</li>
+      </ol>
+</section>
+</div>
+<div id="changes">
+<section id="appendix-B">
+      <h2 id="name-change-log">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-change-log" class="section-name selfRef">Change log</a>
+      </h2>
+<p id="appendix-B-1">This section is to be removed before publishing as an RFC.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.1">
+          <p id="appendix-B-2.1.1">draft-ietf-6man-rfc6874bis-06, 2023-03-xx:<a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.1.2.1">Noted potential exposure of MAC addresses in zone IDs.<a href="#appendix-B-2.1.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.1.2.2">Expanded detail on lower-case normalization.<a href="#appendix-B-2.1.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.1.2.3">Added specific use case examples.<a href="#appendix-B-2.1.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.1.2.4">Clearly stated cut-and-paste requirement.<a href="#appendix-B-2.1.2.4" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.1.2.5">Mentioned .local as another case of locally significant URIs.<a href="#appendix-B-2.1.2.5" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.1.2.6">Indicated that network infrastructure devices are out of scope.<a href="#appendix-B-2.1.2.6" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.1.2.7">Other IESG review nits.<a href="#appendix-B-2.1.2.7" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.2">
+          <p id="appendix-B-2.2.1">draft-ietf-6man-rfc6874bis-05, 2022-11-07:<a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.2.2.1">Noted lower case issue.<a href="#appendix-B-2.2.2.1" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.3">
+          <p id="appendix-B-2.3.1">draft-ietf-6man-rfc6874bis-04, 2022-10-19:<a href="#appendix-B-2.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.3.2.1">should accept -&gt; SHOULD.<a href="#appendix-B-2.3.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.3.2.2">Suggested maximum length of zone ID.<a href="#appendix-B-2.3.2.2" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.4">
+          <p id="appendix-B-2.4.1">draft-ietf-6man-rfc6874bis-03, 2022-09-30:<a href="#appendix-B-2.4.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.4.2.1">Strengthened motivation for publishing this requirement now.<a href="#appendix-B-2.4.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.4.2.2">Removed unnecessary sentence about browsers.<a href="#appendix-B-2.4.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.4.2.3">Noted that zone ID will be revealed to HTTP server.<a href="#appendix-B-2.4.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.4.2.4">Noted that servers should make no use of received zone IDs.<a href="#appendix-B-2.4.2.4" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.4.2.5">Noted that zone IDs have no length limit.<a href="#appendix-B-2.4.2.5" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.4.2.6">Added section on scope and deployment, specifically noting that URIs with local scope are nothing new.<a href="#appendix-B-2.4.2.6" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.4.2.7">Other Last Call clarifications and nits.<a href="#appendix-B-2.4.2.7" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.5">
+          <p id="appendix-B-2.5.1">draft-ietf-6man-rfc6874bis-02, 2022-07-05:<a href="#appendix-B-2.5.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.5.2.1">Improve discussion of URLs in HTML documents<a href="#appendix-B-2.5.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.5.2.2">Discuss scripting attack and Modified EUI IIDs<a href="#appendix-B-2.5.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.5.2.3">Several editorial clarifications<a href="#appendix-B-2.5.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.5.2.4">Some nits fixed<a href="#appendix-B-2.5.2.4" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.6">
+          <p id="appendix-B-2.6.1">draft-ietf-6man-rfc6874bis-01, 2022-04-07:<a href="#appendix-B-2.6.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.6.2.1">Extended use cases<a href="#appendix-B-2.6.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.6.2.2">Clarified relationship with RFC3986 language<a href="#appendix-B-2.6.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.6.2.3">Allow for legacy use of RFC6874 format<a href="#appendix-B-2.6.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.6.2.4">Augmented security considerations<a href="#appendix-B-2.6.2.4" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.6.2.5">Editorial and reference improvements<a href="#appendix-B-2.6.2.5" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.7">
+          <p id="appendix-B-2.7.1">draft-ietf-6man-rfc6874bis-00, 2022-03-19:<a href="#appendix-B-2.7.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.7.2.1">WG adoption<a href="#appendix-B-2.7.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.7.2.2">Clarified security considerations<a href="#appendix-B-2.7.2.2" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.8">
+          <p id="appendix-B-2.8.1">draft-carpenter-6man-rfc6874bis-03, 2022-02-08:<a href="#appendix-B-2.8.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.8.2.1">Changed to bare % signs.<a href="#appendix-B-2.8.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.8.2.2">Added IRIs, RFC3987<a href="#appendix-B-2.8.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.8.2.3">Editorial fixes<a href="#appendix-B-2.8.2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.9">
+          <p id="appendix-B-2.9.1">draft-carpenter-6man-rfc6874bis-02, 2021-18-12:<a href="#appendix-B-2.9.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.9.2.1">Give details of open issues<a href="#appendix-B-2.9.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.9.2.2">Update authorship<a href="#appendix-B-2.9.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.9.2.3">Editorial fixes<a href="#appendix-B-2.9.2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.10">
+          <p id="appendix-B-2.10.1">draft-carpenter-6man-rfc6874bis-01, 2021-07-11:<a href="#appendix-B-2.10.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.10.2.1">Added section on issues with RFC6874<a href="#appendix-B-2.10.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.10.2.2">Removed suggested heuristic for bare % signs<a href="#appendix-B-2.10.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="appendix-B-2.10.2.3">Editorial fixes<a href="#appendix-B-2.10.2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="appendix-B-2.11">
+          <p id="appendix-B-2.11.1">draft-carpenter-6man-rfc6874bis-00, 2021-07-05:<a href="#appendix-B-2.11.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-2.11.2.1">Initial version<a href="#appendix-B-2.11.2.1" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+      </ul>
+</section>
+</div>
+<div id="ack">
+<section id="appendix-C">
+      <h2 id="name-acknowledgements">
+<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+      </h2>
+<p id="appendix-C-1">
+The lack of this format was first pointed out by Margaret Wasserman and
+later by Kerry Lynn. A previous draft document by Bill
+Fenner and <span class="contact-name">Martin Dürst</span> <span>[<a href="#LITERAL-ZONE" class="cite xref">LITERAL-ZONE</a>]</span> discussed this topic but was not finalised.
+Michael Sweet and Andrew Cady explained some of the difficulties caused by RFC 6874. The ABNF syntax proposed above
+was drafted by Andrew Cady.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-2">Valuable comments and contributions were made by
+Karl Auer,
+Carlos Bernardos,
+Carsten Bormann,
+Benoit Claise,
+<span class="contact-name">Martin Dürst</span>,
+David Farmer,
+Stephen Farrell,
+Brian Haberman,
+Ted Hardie,
+Philip Homburg,
+Tatuya Jinmei,
+Leif Johansson,
+Yves Lafon,
+Barry Leiba,
+Ted Lemon,
+Ben Maddison,
+Radia Perlman,
+Tom Petch,
+Michael Richardson,
+Tomoyuki Sahara,
+<span class="contact-name">Jürgen Schönwälder</span>,
+Nico Schottelius,
+Dave Thaler,
+Martin Thomson,
+Philipp S. Tiesel,
+Ole Troan,
+<span class="contact-name">Éric Vyncke</span>,
+Shang Ye,
+several IESG members, and others.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-D">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Brian Carpenter</span></div>
+<div dir="auto" class="left"><span class="street-address">School of Computer Science<br>University of Auckland<br>PB 92019<br>Auckland 1142</span></div>
+<div dir="auto" class="left"><span class="country-name">New Zealand</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:brian.e.carpenter@gmail.com" class="email">brian.e.carpenter@gmail.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Stuart Cheshire</span></div>
+<div dir="auto" class="left"><span class="org">Apple Inc.</span></div>
+<div dir="auto" class="left"><span class="street-address">1 Infinite Loop<br>Cupertino, CA 95014</span></div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:cheshire@apple.com" class="email">cheshire@apple.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Robert M. Hinden</span></div>
+<div dir="auto" class="left"><span class="org">Check Point Software</span></div>
+<div dir="auto" class="left"><span class="street-address">959 Skyway Road<br>San Carlos, CA 94070</span></div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:bob.hinden@gmail.com" class="email">bob.hinden@gmail.com</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
