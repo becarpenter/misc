@@ -4,6 +4,6 @@ Some plots of when IETFers send email, on an hourly or daily basis. These plots 
 
 No emails that I personally** sent were counted, and only emails where the string "ietf" (or "IETF") appears in the To: or Cc: (or CC:) fields were counted.
 
-The code isn't quite ready for public view yet.
+The code is here but there is no warranty of any kind; do what you want with it at your own risk.
 
 ** or anyone else called Brian, for reasons of lazy programming.
