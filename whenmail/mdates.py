@@ -73,6 +73,8 @@ tag = askstring(T, "Enter meaningful identifier for output graphs")
 if len(tag) < 1:
     tag = "mbox"
 
+tagstring = " ("+tag+")"
+
 me = askstring(T, "Enter string to exclude matching senders (or nil)")
 if len(me) > 3:
     showinfo(title=T,
@@ -189,7 +191,7 @@ plot.bar(hournames, h, color ='blue',
         width = 0.4) 
 plot.xlabel("Hour")
 plot.ylabel("Messages sent")
-plot.title("Hourly distribution of messages in sender's local time zone")
+plot.title("Hourly distribution of messages in sender's local time zone"+tagstring)
 plot.savefig(fn+"-hourly-local.png", format="png")
 plot.show()
 
@@ -208,7 +210,7 @@ plot.bar(hournames, h, color ='blue',
         width = 0.4) 
 plot.xlabel("Hour")
 plot.ylabel("Messages sent")
-plot.title("Hourly distribution of messages in UTC")
+plot.title("Hourly distribution of messages in UTC"+tagstring)
 plot.savefig(fn+"-hourly-UTC.png", format="png")
 plot.show()
 
@@ -224,7 +226,7 @@ plot.bar(daynames, wkday, color ='blue',
         width = 0.4) 
 plot.xlabel("Day")
 plot.ylabel("Messages sent")
-plot.title("Daily distribution of messages in sender's local time zone")
+plot.title("Daily distribution of messages in sender's local time zone"+tagstring)
 plot.savefig(fn+"-daily-local.png", format="png")
 plot.show()
 
@@ -238,7 +240,7 @@ plot.bar(daynames, wkday, color ='blue',
         width = 0.4) 
 plot.xlabel("Day")
 plot.ylabel("Messages sent")
-plot.title("Daily distribution of messages in UTC")
+plot.title("Daily distribution of messages in UTC"+tagstring)
 plot.savefig(fn+"-daily-UTC.png", format="png")
 plot.show()
 
