@@ -57,11 +57,6 @@ daynames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 hournames = ["0","1","2","3","4","5","6","7","8","9","10","11","12","13",
              "14","15","16","17","18","19","20","21","22","23"]
 
-#if you're not called Brian, you'll need to change this line:
-me = "brian" #to elminate my own sent mail, which would bias the sample
-me= "neverNeverNEVER"
-
-
 # get mbox name and read file
 
 Tk().withdraw() # we don't want a full GUI
