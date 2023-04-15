@@ -6,7 +6,7 @@ file in MBOX format.
 No warranty. Use, copy and modify as you wish, at your own risk.""" 
 
 from tkinter import Tk
-from tkinter.filedialog import asksaveasfile, askopenfilename
+from tkinter.filedialog import askopenfilenames
 from tkinter.messagebox import showinfo
 from tkinter.simpledialog import askstring
 import matplotlib.pyplot as plot
@@ -64,10 +64,14 @@ Tk().withdraw() # we don't want a full GUI
 T = "Email send plotter"
 
 showinfo(title=T,
-         message = "I'm going to need an MBOX file.")
-fn = (askopenfilename(title="Select MBOX file"))
+         message = "I'm going to need one or more MBOX files.")
+fns = (askopenfilenames(title="Select MBOX file(s)"))
 showinfo(title=T,
-         message = "Plots will be saved as PNG in the same folder as the MBOX file.")
+         message = "Plots will be saved as PNG in the same folder as the first MBOX file.")
+
+tag = askstring(T, "Enter meaningful identifier for output graphs")
+if len(tag) < 1:
+    tag = "mbox"
 
 me = askstring(T, "Enter string to exclude matching senders (or nil)")
 if len(me) > 3:
@@ -76,7 +80,13 @@ if len(me) > 3:
 else:
     me = ""
 
-raw_mbox = rf(fn)
+
+fn,_ = fns[0].rsplit("/",1)
+fn = fn  + "/" + tag
+
+raw_mbox = []
+for f in fns:
+    raw_mbox.extend(rf(f))
 
 # separate dates from chaff
 
