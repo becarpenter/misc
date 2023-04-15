@@ -8,6 +8,7 @@ No warranty. Use, copy and modify as you wish, at your own risk."""
 from tkinter import Tk
 from tkinter.filedialog import asksaveasfile, askopenfilename
 from tkinter.messagebox import showinfo
+from tkinter.simpledialog import askstring
 import matplotlib.pyplot as plot
 #And why not import datetime? It's just too abstruse, so I did it the hard way.
 
@@ -58,6 +59,7 @@ hournames = ["0","1","2","3","4","5","6","7","8","9","10","11","12","13",
 
 #if you're not called Brian, you'll need to change this line:
 me = "brian" #to elminate my own sent mail, which would bias the sample
+me= "neverNeverNEVER"
 
 
 # get mbox name and read file
@@ -72,6 +74,13 @@ fn = (askopenfilename(title="Select MBOX file"))
 showinfo(title=T,
          message = "Plots will be saved as PNG in the same folder as the MBOX file.")
 
+me = askstring(T, "Enter string to exclude matching senders (or nil)")
+if len(me) > 3:
+    showinfo(title=T,
+         message = "Senders that include '"+me+"' will be excluded")
+else:
+    me = ""
+
 raw_mbox = rf(fn)
 
 # separate dates from chaff
@@ -80,7 +89,7 @@ raw_dates = []
 in_msg = False
 
 for l in raw_mbox:
-    if l.startswith("From - "):
+    if l.startswith("From - ") or l.startswith("From nobody "):
         #in a new message
         in_msg = True
         hold_date = None
@@ -91,19 +100,23 @@ for l in raw_mbox:
     if in_msg and l.startswith("Date: "):
         hold_date = l.strip("Date: ").replace(",","").strip("\n")
         continue
-    if in_msg and l.startswith("From: ") and me in l.lower():
+    if me and in_msg and l.startswith("From: ") and me in l.lower():
         #from me, ignore
         hold_date = None
         in_msg = False
         continue
     if in_msg:
-        if l.startswith("To: ") or l.startswith("CC: ") or l.startswith("Cc: "):
-            if "ietf" in l.lower():
-                ietf = True
+        #if l.startswith("To: ") or l.startswith("CC: ") or l.startswith("Cc: "):
+        #(That doesn't work because these lines can split, so we'll be lazy)
+        if "ietf.org" in l.lower():
+            ietf = True
         
-    if in_msg and l.startswith("Subject: "):
+    #if in_msg and l.startswith("Subject: "):
+    if in_msg and len(l)<1: #blank line terminates headers
         if hold_date and ietf:
             raw_dates.append(hold_date)
+##        else:
+##            print(hold_date)
         in_msg = False
 
 del raw_mbox
@@ -132,8 +145,12 @@ for l in raw_dates:
     tmins = 60*thour + tmin
     tzmins = 60*tzhour + tzmin
     umins = tmins + tzsign*tzmins
-
-    if umins > daymins:
+    
+    if umins == daymins:
+        #dead on midnight
+        umins = 0
+        uday = day
+    elif umins > daymins:
         #it's tomorrow already!
         umins = umins - daymins
         uday = after(day)
@@ -145,6 +162,8 @@ for l in raw_dates:
         uday = day
     uhour = umins // 60
     umin = umins % 60
+##    if uhour == 24:
+##        print(l, uday, uhour)
     #print(day, thour, tmin, tzsign, tzhour, tzmin, uday, uhour, umin)
     dates.append(daterec(day, thour, tmin, uday, uhour, umin))
 
