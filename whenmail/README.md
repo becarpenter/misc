@@ -23,6 +23,6 @@ Choose Mbox.
 ```
 Then you'll need to detar the files received (tar -xzvf XXXX.tar.gz on Linux or Cygwin) and launch mdates.py .
 
-The code is here but there is no warranty of any kind; do what you want with it at your own risk.
+The code is here but there is no warranty of any kind; do what you want with it at your own risk. (I've also posted a companion program that extracts a list of email senders from an MBOX file.)
 
 ** or anyone else called Brian, for reasons of lazy programming.
