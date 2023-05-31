@@ -1,13 +1,18 @@
-URLcheck run at 2023-05-26 10:50:50 UTC+1200
+URLcheck run at 2023-05-31 09:47:49 UTC+1200
 Running in directory C:\brian\docs\IETF stuff\rfc
 rfc1812.txt http://ds.internic.net/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
+rfc1855.txt gopher URL seen
 rfc1855.txt ftp://ftp.intel.com/pub/papers/horses.ps HTTP response None
 rfc1855.txt ftp://ftp.temple.edu/pub/info/help-net/netiquette.infohn Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc1855.txt ftp://ds.internic.net/rfc/rfc1087.txt FAILING DOMAIN (see above)
+rfc1855.txt gopher URL seen
 rfc1855.txt ftp://ds.internic.net/rfc/rfc1402.txt FAILING DOMAIN (see above)
 rfc1855.txt http://www.kei.com/irc/IRCprimer1.1.txt Socket error HTTP Error 404: Not Found
+rfc1855.txt gopher URL seen
 rfc1855.txt ftp://ftp.nysernet.org/pub/resources/guides/surfing.2.0.3.txt Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc1855.txt http://www.fau.edu/rinaldi/net/index.htm Socket error HTTP Error 404: Not Found
+rfc1855.txt gopher URL seen
+rfc1855.txt gopher URL seen
 rfc1866.txt http://host/dir/file.gif Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc1866.txt http://host/dir/file.gif FAILING DOMAIN (see above)
 rfc1866.txt http://machine/htbin/imagemap/sample Socket error <urlopen error [Errno 11001] getaddrinfo failed>
@@ -32,6 +37,7 @@ rfc1866.txt ftp://ds.internic.net/rfc/rfc1590.txt FAILING DOMAIN (see above)
 rfc1866.txt ftp://ds.internic.net/rfc/rfc1700.txt FAILING DOMAIN (see above)
 rfc1866.txt http://www.sq.com/ Socket error The read operation timed out
 rfc1867.txt http://server.dom/cgi/handle Socket error <urlopen error [Errno 11001] getaddrinfo failed>
+rfc2028.txt gopher URL seen
 rfc2028.txt http://www.isi.edu/rfc-editor Socket error HTTP Error 404: Not Found
 rfc2048.txt ftp://ftp.isi.edu/in-notes/iana/assignments/media-types/ Socket error <urlopen error ftp error: 550 in-notes/iana/assignments/media-types: No such file or directory>
 rfc2048.txt ftp://ftp.isi.edu/in-notes/iana/assignments/access-types/ Socket error <urlopen error ftp error: 550 in-notes/iana/assignments/access-types: No such file or directory>
@@ -49,7 +55,6 @@ rfc2235.txt ftp://ftp.cs.wisc.edu/connectivity_table/ HTTP response None
 rfc2235.txt http://www.netcraft.com/survey/ Socket error HTTP Error 403: Forbidden
 rfc2235.txt http://www.wia.org/dns-law/pub/timeline.html Socket error HTTP Error 404: Not Found
 rfc2235.txt http://www.bbn.com/timeline/ Socket error HTTP Error 403: Forbidden
-rfc2267.txt http://www.nanog.org Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
 rfc2267.txt http://www.quadrunner.com/~chuegen/smurf.txt Socket error HTTP Error 404: Not Found
 rfc2418.txt ftp://ftp.ietf.org/ietf-mail-archive Socket error <urlopen error ftp error: <urlopen error ftp error: error_perm('550 ietf-mail-archive: No such file or directory')>>
 rfc2418.txt http://www.bell-labs.com/mailing-lists/siptel Socket error HTTP Error 404: Not Found
@@ -69,6 +74,7 @@ rfc2616.txt http://www.isi.edu/touch/pubs/http-perf96/ Socket error HTTP Error 4
 rfc2617.txt http://www.nowhere.org/dir/index.html Socket error HTTP Error 404: Not Found
 rfc2626.txt ftp://ftp.nikhef.nl/pub/network/host_YYMMDD Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc2626.txt ftp://ftp.nikhef.nl/pub/network/host_YYMMDD FAILING DOMAIN (see above)
+rfc2626.txt gopher URL seen
 rfc2626.txt http://rism.harvard.edu/RISM/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc2626.txt http://mcentury.citi.do Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc2626.txt http:// Socket error <urlopen error no host given>
@@ -80,7 +86,7 @@ rfc2626.txt http://zones.stds_r_us.net/tz/America-SanJose FAILING DOMAIN (see ab
 rfc2768.txt http://www.ercim.org/publication/ws-proceedings/EU-NSF/metadata.pdf Socket error HTTP Error 404: Not Found
 rfc2768.txt http://www.mcs.anl.gov/middleware98 Socket error HTTP Error 404: Not Found
 rfc2784.txt ftp://ftp.isi.edu/in-notes/iana/assignments/ethernet-numbers (split URL?) Socket error <urlopen error ftp error: 550 in-notes/iana/assignments: No such file or directory>
-rfc2804.txt http://www.ietf.org/mailman/listinfo/raven) Socket error HTTP Error 404: Not Found
+rfc2804.txt http://www.ietf.org/mailman/listinfo/raven Socket error HTTP Error 404: Not Found
 rfc2817.txt http:// FAILING URL (see above)
 rfc2828.txt http://www.rosslyn.bbn.com/foo Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc2828.txt http://www.radium.ncsc.mil/tpep/epl/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
@@ -151,7 +157,6 @@ rfc3238.txt http://www1.ietf.org/mail-archive/ietf/Current/msg12650.html Socket 
 rfc3238.txt http://www.ietf.cnri.reston.va.us/proceedings/00dec/toc.htm#P25_256 Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3238.txt http://www.imc.org/ietf-openproxy/mail-archive/msg00865.html Socket error HTTP Error 404: Not Found
 rfc3238.txt http://www.stardust.com/cdnweek/articles/2001/07/09/opes.htm Socket error HTTP Error 404: Not Found
-rfc3247.txt http://lcawww.epfl.ch) Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3254.txt http://www.telstra.net/gih/papers/ipj/4-1-bgp.pdf Socket error HTTP Error 404: Not Found
 rfc3280.txt http://csrc.nist.gov/pki/pkixtools Socket error HTTP Error 404: 
 rfc3289.txt http://www.ieee-infocom.org/2000/papers/405.pdf (split URL?) Socket error HTTP Error 404: Not Found
@@ -184,8 +189,7 @@ rfc3513.txt http://www.isi.edu/in-notes/iana/assignments/ipv6-address-space.txt 
 rfc3531.txt http://www.viagenie.qc.ca/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3536.txt http://www.dkuug.dk/JTC1/SC2/WG2/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc3536.txt http://www.dkuug.dk/jtc1/sc22/wg20/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
-rfc3551.txt ftp://ftp.sgi.com/sgi/aiff-c.9.26.91.ps.Z) Socket error <urlopen error [Errno 11001] getaddrinfo failed>
-rfc3551.txt http://www.itu.int) Socket error <urlopen error [Errno 11001] getaddrinfo failed>
+rfc3551.txt ftp://ftp.sgi.com/sgi/aiff-c.9.26.91.ps.Z Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3551.txt ftp://ftp.cwi.nl/local/pub/audio/adpcm.shar Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3551.txt ftp://parcftp.xerox.com/pub/net-research/lpc.tar.Z Socket error <urlopen error ftp error: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc3587.txt http://www.ripe.net/ripe/docs/ipv6policy.html Socket error HTTP Error 404: Not Found
@@ -193,6 +197,7 @@ rfc3600.txt http://www.rfc-editor.org/go.html Socket error HTTP Error 404: Not F
 rfc3600.txt http://www.rfc-editor.org/go.html FAILING URL (see above)
 rfc3600.txt http://www.rfc-editor.org/category.html Socket error HTTP Error 404: Not Found
 rfc3662.txt http://net.informatik.uni-tuebingen.de/~wehrle/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
+rfc3675.txt http://www.ntia.doc.gov/ntiahome/domainname/130dftmail/BT.htm Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
 rfc3675.txt http://www.gao.gov/new.items/og00033r.pdf Socket error HTTP Error 404: Not Found
 rfc3675.txt http://www.gtld-mou.org/docs/notice-97-02.html Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3714.txt http://www.ietf.cnri.reston.va.us/proceedings/02nov/219.htm#slides FAILING DOMAIN (see above)
@@ -216,7 +221,7 @@ rfc3794.txt http://www.cs.ucl.ac.uk/staff/M.Handley/sdp.03.ps Socket error HTTP 
 rfc3864.txt http://www.ninebynine.net/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc3929.txt http://www.fairvote.org/irv/faq.htm Socket error HTTP Error 404: Not Found
 rfc3929.txt http://www.colorado.edu/conflict/peace/treatment/ Socket error HTTP Error 404: Not Found
-rfc3964.txt http://[2002:0900:00ff::bbbb]/index.html) Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+rfc3964.txt http://[2002:0900:00ff::bbbb]/index.html Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc3986.txt http://localhost/ Socket error <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
 rfc3986.txt ftp://ftp.is.co.za/rfc/rfc1808.txt Socket error <urlopen error ftp error: 550 rfc: No such file or directory>
 rfc3986.txt http:// FAILING URL (see above)
@@ -302,7 +307,6 @@ rfc4089.txt http://www.state.va.us/cgi-bin/scc-C Socket error <urlopen error [Er
 rfc4228.txt http://rtg.ietf.org/~fenner/ietf/xml2rfc-valid/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4228.txt http://tools.ietf.org/tools/idnits/ Socket error HTTP Error 404: Not Found
 rfc4290.txt http://www.ietf.org/IESG/STATEMENTS/IDNstatement.txt Socket error HTTP Error 404: Not Found
-rfc4303.txt http://www.iana.org/assignments/protocol-numbers) Socket error HTTP Error 404: Not Found
 rfc4306.txt http://sec.femto.org/wetice-2001/papers/radia-paper.pdf Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4306.txt http://www.informatik.uni-trier.de/~ley/db/conf/ Socket error HTTP Error 406: Not Acceptable
 rfc4339.txt http://www.cs.umn.edu/~jjeong/ Socket error HTTP Error 404: Not Found
@@ -310,20 +314,17 @@ rfc4371.txt http://www.ietf.org/trust/IETFtrustAgreement20051208.pdf Socket erro
 rfc4417.txt http://www.qualcomm.com/~presnick/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4417.txt http://www.jabber.org/people/stpeter.shtml Socket error HTTP Error 404: Not Found
 rfc4614.txt ftp://ftp.ee.lbl.gov/papers/congavoid.ps.Z FAILING URL (see above)
-rfc4632.txt http://www.nanog.org/mtg-0302/cidr.html Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
+rfc4632.txt http://www.nanog.org/mtg-0302/cidr.html Socket error HTTP Error 404: Not Found
 rfc4633.txt http://www.ietf.org/IESG/STATEMENTS/statement-disruptive-posting.txt (split URL?) Socket error HTTP Error 404: Not Found
 rfc4633.txt http://www.ietf.org/IESG/STATEMENTS/moderated-lists.txt (split URL?) Socket error HTTP Error 404: Not Found
 rfc4646.txt http://www.iso.org/iso/en/prods-services/iso3166ma/index.html Socket error HTTP Error 404: 
-rfc4646.txt http://www.w3.org/TR/xmlschema-2/> Socket error HTTP Error 404: Not Found
 rfc4648.txt http://zgp.org/pipermail/p2p-hackers/2001-September/ Socket error HTTP Error 404: Not Found
-rfc4677.txt http://www.rfc-editor.org) Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4677.txt http://edu.ietf.org/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4677.txt http://www.ietf.org/proceedings/directory.html Socket error HTTP Error 404: Not Found
 rfc4677.txt http://edu.ietf.org/ FAILING DOMAIN (see above)
 rfc4677.txt http://www.ietf.org/meetings/wg_agenda_xx.html Socket error HTTP Error 404: Not Found
 rfc4677.txt ftp://ftp.ietf.org/ietf-mail-archive/ Socket error <urlopen error ftp error: 550 ietf-mail-archive: No such file or directory>
 rfc4677.txt http://tools.ietf.org/tools/idnits/idnits.pyht Socket error HTTP Error 404: Not Found
-rfc4677.txt http://www.icann.org/ Socket error Remote end closed connection without response
 rfc4677.txt http://www.iso.ch/ Socket error Remote end closed connection without response
 rfc4690.txt http://www.ietf.org/IESG/STATEMENTS/IDNstatement.txt FAILING URL (see above)
 rfc4690.txt http://www7.nationalacademies.org/cstb/pub_dns.html Socket error HTTP Error 404: Not Found
@@ -336,6 +337,7 @@ rfc4858.txt http://psg.com/~mrw/PROTO-Team Socket error HTTP Error 404: Not Foun
 rfc4858.txt http://research.nokia.com/people/lars_eggert Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4861.txt ftp://ftp.ee.lbl.gov/papers/sync_94.ps.Z HTTP response None
 rfc4890.txt http://www.netfilter.org/ Socket error HTTP Error 403: Forbidden
+rfc4942.txt https://www.trustedcomputinggroup.org/groups/TCG_1_0_Architecture_Overview.pdf Socket error HTTP Error 404: Not Found
 rfc4948.txt http://www.adastral.ucl.ac.uk/~helger/crypto/link/protocols/mix.php Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4948.txt http://ims.eecs.umich.edu/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc4948.txt http://utgard.ietf.org/iab/about/workshops/unwantedtraffic/index.html Socket error <urlopen error [Errno 11001] getaddrinfo failed>
@@ -343,7 +345,7 @@ rfc4984.txt http://www.arin.net/index.shtml Socket error HTTP Error 404: Not Fou
 rfc4984.txt http://www.ripe.net/docs/ipv4-policies.html Socket error HTTP Error 404: Not Found
 rfc4984.txt http://www.cs.ucla.edu/~rveloso/papers/ Socket error HTTP Error 404: Not Found
 rfc4984.txt http://www.cs.ucla.edu/~rveloso/papers/activity.pdf Socket error HTTP Error 404: Not Found
-rfc4984.txt http://www.nanog.org/mtg-0602/pdf/boothe.pdf Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
+rfc4984.txt http://www.nanog.org/mtg-0602/pdf/boothe.pdf Socket error HTTP Error 404: Not Found
 rfc4984.txt http://www.sigcomm.org/sigcomm2006/ Socket error HTTP Error 500: Internal Server Error
 rfc4984.txt http://citeseer.ist.psu.edu/710757.html Socket error HTTP Error 404: Not Found
 rfc4984.txt http:// FAILING URL (see above)
@@ -364,6 +366,8 @@ rfc5375.txt http://www.apnic.net/policy/ipv6-address-policy.html Socket error HT
 rfc5375.txt http://lacnic.net/en/politicas/ipv6.html Socket error HTTP Error 404: Not Found
 rfc5375.txt http://www.afrinic.net/docs/policies/afpol-v6200407-000.htm Socket error HTTP Error 404: Not Found
 rfc5434.txt http://www.ietf.org/instructions/MTG-SLOTS.html Socket error HTTP Error 404: Not Found
+rfc5533.txt http://www.it.uc3m.es Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+rfc5535.txt http://www.it.uc3m.es FAILING URL (see above)
 rfc5540.txt http://www.rfc-editor.org/RFCeditor.at.ISI.pdf Socket error HTTP Error 404: Not Found
 rfc5594.txt http://www.cablemodem.com/specifications/specifications20.html Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.cablemodem.com'. (_ssl.c:992)>
 rfc5594.txt http:// FAILING URL (see above)
@@ -382,13 +386,13 @@ rfc5720.txt http://www.isi.edu/touch/pubs/ngi97/x-bone-ngi97.pdf Socket error HT
 rfc5772.txt http://www.ietf.org/html.charters/OLD/policy-charter.html Socket error HTTP Error 404: Not Found
 rfc5772.txt http://www.ietf.org/html.charters/OLD/rap-charter.html Socket error HTTP Error 404: Not Found
 rfc5772.txt http://www.ietf.org/html.charters/OLD/snmpconf-charter.html Socket error HTTP Error 404: Not Found
-rfc5773.txt http://www.isi.edu/newarch/) Socket error HTTP Error 404: Not Found
 rfc5773.txt http://www.isc.org/index.pl?/sw/IRRToolSet/ Socket error HTTP Error 404: Not Found
 rfc5773.txt http://www.cse.ucsc.edu/research/ccrg/publications/zhengyu.milcom97.pdf Socket error HTTP Error 404: Not Found
+rfc5887.txt http://www.ntia.doc.gov/DNS/DNSSEC.html Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
 rfc5887.txt http://www.arin.net/meetings/minutes/ARIN_XVIII/PDF/wednesday/Renumbering_Crocker.pdf Socket error HTTP Error 404: Not Found
-rfc5902.txt http://www.nanog.org/meetings/nanog44/presentations/Monday/Roisman_lightning.pdf Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
 rfc5963.txt http://www.nro.net/documents/comp-pol.html#3-4-2 Socket error HTTP Error 404: Not Found
 rfc5991.txt http://csrc.nist.gov/publications/nistpubs/800-90/SP800-90revised_March2007.pdf Socket error HTTP Error 404: 
+rfc6052.txt http://www.it.uc3m.es/marcelo Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc6057.txt http://www.cablelabs.com/cablemodem/specifications/specifications30.html Socket error HTTP Error 404: Not Found
 rfc6057.txt http://www.cablelabs.com/cablemodem/specifications/specifications30.html FAILING URL (see above)
 rfc6057.txt http://www.cablelabs.com/cablemodem/specifications/specifications30.html FAILING URL (see above)
@@ -398,7 +402,6 @@ rfc6057.txt http://www.cablelabs.com/cablemodem/specifications/specifications30.
 rfc6057.txt http://fjallfoss.fcc.gov/ecfs/document/view?id=6520192582 Socket error timed out
 rfc6057.txt http://hraunfoss.fcc.gov/edocs_public/attachmatch/FCC-08-183A1.pdf Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc6057.txt http://fjallfoss.fcc.gov/ecfs/document/view?id=6520169715 Socket error timed out
-rfc6057.txt http://customer.comcast.com/Pages/FAQListViewer.aspx?topic=Internet&folder=8b2fc392-4cde-4750-ba34-051cd5feacf0 Socket error <urlopen error [Errno 11002] getaddrinfo failed>
 rfc6057.txt http://www.comcast.com Socket error HTTP Error 403: Forbidden
 rfc6057.txt http://www.comcast.com FAILING URL (see above)
 rfc6057.txt http://www.comcast.com FAILING URL (see above)
@@ -407,9 +410,11 @@ rfc6057.txt http://www.comcast.com FAILING URL (see above)
 rfc6092.txt http://upnp.org/specs/gw/igd2/ Socket error HTTP Error 404: Not Found
 rfc6106.txt http://www.cs.umn.edu/~jjeong/ FAILING URL (see above)
 rfc6115.txt http://www.tschofenig.priv.at/rrg/CR_mapping_system_0.1.pdf Socket error HTTP Error 404: Not Found
-rfc6115.txt http://www3.informatik.uni-wuerzburg.de/TR/tr470.pdf Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:992)>
+rfc6115.txt http://www3.informatik.uni-wuerzburg.de/TR/tr470.pdf Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc6115.txt http://docs.google.com/fileview?id=0BwsJc7A4NTgeOTYzMjFlOGEtYzA4OC00NTM0LTg5ZjktN Socket error HTTP Error 404: Not Found
 rfc6115.txt http://docs.google.com/Doc?docid=0AQsJc7A4NTgeZGM3Y3o1NzVfNmd3eGRzNGhi&hl=en Socket error HTTP Error 404: Not Found
+rfc6146.txt http://www.it.uc3m.es/marcelo FAILING URL (see above)
+rfc6147.txt http://www.it.uc3m.es/marcelo FAILING URL (see above)
 rfc6177.txt http://www.arin.net/policy/proposals/2005_8.html Socket error HTTP Error 404: Not Found
 rfc6177.txt http://www.ripe.net/ripe/docs/ipv6policy.html; Socket error HTTP Error 404: Not Found
 rfc6177.txt http://www.apnic.net/docs/policy/ipv6-address-policy.html (split URL?) Socket error HTTP Error 404: Not Found
@@ -426,14 +431,13 @@ rfc6219.txt http://test6.ivi2.org Socket error <urlopen error [WinError 10060] A
 rfc6250.txt http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA426770&Location=U2&doc=GetTRDoc.pdf Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc6250.txt http://www.cs.dartmouth.edu/cms_file/SYS_techReport/337/ Socket error HTTP Error 404: Not Found
 rfc6269.txt http://www.wand.net.nz/~salcock/someisp/flow_counting/result_page.html Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
-rfc6269.txt http://icann.org/en/news/releases/release-03feb11-en.pdf Socket error Remote end closed connection without response
 rfc6269.txt http://research.nokia.com/node/5597 FAILING DOMAIN (see above)
 rfc6269.txt http://upnp.org/specs/gw/igd2/ FAILING URL (see above)
 rfc6269.txt http://www.microsoft.com/whdc/winlogo/hwrequirements/default.mspx Socket error HTTP Error 403: Forbidden
 rfc6272.txt http://collaborate.nist.gov/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc6316.txt http://cse.aalto.fi/research/groups/datacommunications/people/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
+rfc6316.txt http://it.uc3m.es/marcelo Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc6319.txt http://69box.atlantic.net/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
-rfc6319.txt http://mailman.nanog.org/pipermail/nanog/2010-January/017451.html Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
 rfc6319.txt http://www.nro.net/rir-comparative-policy-overview/rir-comparative-policy-overview-2009-03#1-3-2 Socket error HTTP Error 404: Not Found
 rfc6319.txt http://www.nro.net/rir-comparative-policy-overview/rir-comparative-policy-overview-2009-03 Socket error HTTP Error 404: Not Found
 rfc6319.txt http://www.ripe.net/ripe/policies/ Socket error HTTP Error 404: Not Found
@@ -442,12 +446,12 @@ rfc6319.txt http://www.frontiercorp.com/ Socket error HTTP Error 403: Forbidden
 rfc6342.txt http://www.3gpp2.org/public_html/ Socket error HTTP Error 404: Not Found
 rfc6343.txt http://www.fud.no/ipv6/ Socket error HTTP Error 404: Not Found
 rfc6346.txt http://www.isc.org/software/aftr Socket error HTTP Error 404: Not Found
-rfc6346.txt http://software.merit.edu/pe-arp/) Socket error HTTP Error 503: Service Unavailable
+rfc6346.txt http://software.merit.edu/pe-arp/ Socket error HTTP Error 503: Service Unavailable
 rfc6385.txt http://www.rfc-editor.org/rfc-style-guide/rfc-style Socket error HTTP Error 404: Not Found
 rfc6419.txt http://developer.android.com/reference/android/net/ConnectivityManager.html Socket error HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.
 The last 30x error message was:
 Moved Temporarily
-rfc6419.txt http://gitorious.org/0xdroid/bionic/commit/9ab75d4cc803e91b7f1b656ffbe2ad32c52a86f9 Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:992)>
+rfc6419.txt http://gitorious.org/0xdroid/bionic/commit/9ab75d4cc803e91b7f1b656ffbe2ad32c52a86f9 Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
 rfc6419.txt http://www.forum.nokia.com/info/sw.nokia.com/id/190358c8-7cb1-4be3-9321-f9d6788ecae5/S60_Platform_IP_Bearer_Management_v1_0_en.pdf.html Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc6434.txt http://jitc.fhu.disa.mil/apl/ipv6/pdf/disr_ipv6_50.pdf Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc6436.txt http://www.nsa.gov/ia/_files/ipv6/I733-041R-2007.pdf Socket error HTTP Error 404: Not Found
@@ -460,7 +464,9 @@ rfc6589.txt http://www.networkworld.com/news/2010/032610-yahoo-dns.html Socket e
 rfc6589.txt http://groups.csail.mit.edu/ana/Publications/PubPDFs/Rethinking Socket error HTTP Error 404: Not Found
 rfc6589.txt http://www.comcast6.net/IPv6_DNS_Whitelisting_Concerns_20100416.pdf Socket error HTTP Error 504: Gateway Timeout
 rfc6589.txt http://www.comcast.com FAILING URL (see above)
-rfc6709.txt http://www.iana.org/protocols/) Socket error HTTP Error 404: Not Found
+rfc6629.txt http://www.it.uc3m.es/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
+rfc6629.txt http://www.it.uc3m.es/ FAILING URL (see above)
+rfc6791.txt http://www.bitwizard.nl/mtr/ Socket error timed out
 rfc6824.txt http://www.trilogy-project.org FAILING DOMAIN (see above)
 rfc6874.txt http://[fe80::a%25en1] Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc6874.txt http://[fe80::a%en1] Socket error <urlopen error [Errno 11001] getaddrinfo failed>
@@ -468,25 +474,17 @@ rfc6874.txt http://[fe80::a-en1] Socket error <urlopen error [Errno 11001] getad
 rfc6874.txt http://[v6.fe80::a_en1] Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc6874.txt http://[fe80::a%25en1] FAILING DOMAIN (see above)
 rfc6883.txt http://www.networkworld.com/news/2010/091610-akamai-ipv6.html Socket error HTTP Error 404: Not Found
-rfc6890.txt http://www.icann.org/ FAILING URL (see above)
-rfc6890.txt http://www.icann.org/ FAILING URL (see above)
 rfc6973.txt http://bobgellman.com/rg-docs/rg-FIPShistory.pdf Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc6973.txt http://www.oecd.org/ Socket error HTTP Error 403: Forbidden
 rfc6973.txt http://privacybydesign.ca/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
-rfc6980.txt http://www.si6networks.com/presentations/deepsec2011/fgont-deepsec2011-ipv6-security.pdf Socket error <urlopen error [Errno 11002] getaddrinfo failed>
-rfc6980.txt http://www.si6networks.com FAILING DOMAIN (see above)
+rfc6980.txt http://www.si6networks.com/presentations/deepsec2011/fgont-deepsec2011-ipv6-security.pdf Socket error HTTP Error 404: Not Found
 rfc6982.txt http://www.arkko.com/tools/lifecycle/wgdistr.html Socket error HTTP Error 404: Not Found
-rfc7020.txt http://www.icann.org/en/about/governance/bylaws Socket error Remote end closed connection without response
-rfc7020.txt http://www.icann.org/en/resources/policy/global-addressing/allocation-ipv4-post-exhaustion Socket error Remote end closed connection without response
-rfc7020.txt http://www.icann.org/en/resources/policy/global-addressing/allocation-ipv6-rirs Socket error Remote end closed connection without response
-rfc7020.txt http://www.icann.org/icp/icp-2.htm Socket error Remote end closed connection without response
 rfc7049.txt http://www.ecma-international.org/publications/files/ecma-st/ECMA-262.pdf Socket error HTTP Error 404: Not Found
 rfc7051.txt http://192.0.2.1 Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc7059.txt http://www.lisp4.net/beta-network/ Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc7084.txt http://upnp.org/specs/gw/igd2/ FAILING URL (see above)
 rfc7217.txt http://www.ipv6.org.au/10ipv6summit/talks/Ron_Broersma.pdf Socket error <urlopen error [Errno 11001] getaddrinfo failed>
-rfc7217.txt http://www.si6networks.com/presentations/deepsec2011/fgont-deepsec2011-ipv6-security.pdf FAILING DOMAIN (see above)
-rfc7217.txt http://www.si6networks.com FAILING DOMAIN (see above)
+rfc7217.txt http://www.si6networks.com/presentations/deepsec2011/fgont-deepsec2011-ipv6-security.pdf FAILING URL (see above)
 rfc7221.txt https://datatracker.ietf.org/cgi-bin/wg/wg_init_rev_approval.cgi Socket error HTTP Error 404: Not Found
 rfc7221.txt https://tools.ietf.org/tools/idnits/ Socket error HTTP Error 404: Not Found
 rfc7228.txt http://www.ericsson.com/res/docs/whitepapers/wp-50-billions.pdf Socket error HTTP Error 403: Forbidden
@@ -495,31 +493,20 @@ rfc7322.txt http://www.rfc-editor.org/info/std# FAILING URL (see above)
 rfc7322.txt http://standards.ieee.org/findstds/standard/802.1Q-2011.html Socket error HTTP Error 404: Not Found
 rfc7493.txt http://grouper.ieee.org/groups/754/ Socket error HTTP Error 404: Not Found
 rfc7575.txt http://portal.etsi.org/afi Socket error HTTP Error 403: Forbidden
-rfc7707.txt http://www.si6networks.com/presentations/deepsec2011/fgont-deepsec2011-ipv6-security.pdf FAILING DOMAIN (see above)
-rfc7707.txt http://www.si6networks.com/presentations/lacnic19/lacsec2013-fgont-ipv6-network-reconnaissance.pdf FAILING DOMAIN (see above)
-rfc7707.txt http://www.si6networks.com/tools/ipv6toolkit FAILING DOMAIN (see above)
+rfc7707.txt http://www.si6networks.com/presentations/deepsec2011/fgont-deepsec2011-ipv6-security.pdf FAILING URL (see above)
+rfc7707.txt http://www.si6networks.com/presentations/lacnic19/lacsec2013-fgont-ipv6-network-reconnaissance.pdf Socket error HTTP Error 404: Not Found
 rfc7707.txt http://manpages.ubuntu.com/manpages/precise/man1/mdns-scan.1.html Socket error HTTP Error 404: Not Found
 rfc7707.txt http://www.thc.org/thc-ipv6/ Socket error HTTP Error 404: Not Found
 rfc7707.txt http://pubs.vmware.com/vsphere-55/topic/com.vmware.ICbase/PDF/vsphere-esxi-vcenter-server-552-networking-guide.pdf Socket error The read operation timed out
-rfc7707.txt http://www.si6networks.com FAILING DOMAIN (see above)
 rfc7721.txt http://www.ipv6.org.au/10ipv6summit/talks/Ron_Broersma.pdf FAILING DOMAIN (see above)
 rfc7721.txt http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sag_ip_v6_imp_addr7.mspx?mfr=true Socket error HTTP Error 403: Forbidden
-rfc7721.txt http://www.si6networks.com FAILING DOMAIN (see above)
 rfc7749.txt http://svn.tools.ietf.org/svn/tools/xml2rfc/archive/README.html Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc7749.txt http://svn.tools.ietf.org/svn/tools/xml2rfc/archive/draft-mrose-writing-rfcs.html FAILING DOMAIN (see above)
 rfc7749.txt http://relaxng.org/ns/compatibility/annotations/1.0 Socket error HTTP Error 404: Not Found
 rfc7749.txt http://svn.tools.ietf.org/svn/tools/xml2rfc/vocabulary/v2/03/xml2rfcv2.dtd FAILING DOMAIN (see above)
-rfc7749.txt https://code.google.com/p/jing-trang/downloads/detail?name=jing-20091111.zip Socket error HTTP Error 500: Internal Server Error
-rfc7841.txt http://www.rfc-editor.org/<static-path>/rfc<rfc-no> Socket error HTTP Error 404: Not Found
-rfc7841.txt http://www.rfc-editor.org/materials/status-memos.txt) (split URL?) Socket error HTTP Error 404: Not Found
-rfc7872.txt http://www.si6networks.com/tools/ipv6toolkit FAILING DOMAIN (see above)
-rfc7872.txt http://www.si6networks.com/datasets/wipv6day-domains.txt FAILING DOMAIN (see above)
-rfc7872.txt http://www.si6networks.com FAILING DOMAIN (see above)
-rfc7915.txt http://www.si6networks.com FAILING DOMAIN (see above)
-rfc7934.txt http://www.jpix.ad.jp/en/service/ipv6v4.html Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
+rfc7841.txt http://www.rfc-editor.org/<static-path>/rfc<rfc-no Socket error HTTP Error 404: Not Found
+rfc7872.txt http://www.si6networks.com/datasets/wipv6day-domains.txt Socket error HTTP Error 404: Not Found
 rfc7934.txt https://blogs.oracle.com/fatbloke/entry/what_s_new_in_virtualbox Socket error The read operation timed out
-rfc8064.txt http://it-ebooks.info/book/1022/ Socket error <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)>
-rfc8064.txt https://www.si6networks.com FAILING DOMAIN (see above)
 rfc8100.txt http://metroethernetforum.org/PDF_Documents/technical-specifications/MEF_23.1.pdf Socket error HTTP Error 404: Not Found
 rfc8325.txt https://standards.ieee.org/findstds/standard/802.11-2016.html Socket error HTTP Error 404: Not Found
 rfc8352.txt https://standards.ieee.org/findstds/standard/802.15.4-2015.html Socket error HTTP Error 404: Not Found
@@ -527,17 +514,21 @@ rfc8352.txt http://www.onem2m.org/technical/published-documents Socket error HTT
 rfc8352.txt http://soda.swedishict.se/5128/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc8352.txt http://soda.swedishict.se/4112/ Socket error <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond>
 rfc8520.txt https:// Socket error <urlopen error no host given>
+rfc8572.txt https://www.iana.org/assignments/ssh-para\\meters Socket error HTTP Error 503: Service Unavailable
 rfc8572.txt https://<ip-address-or-hostname>[:<port>] Socket error <urlopen error [Errno 11001] getaddrinfo failed>
 rfc8578.txt http://www.bacnet.org/Addenda/Add-1995-135a.pdf Socket error HTTP Error 404: Not Found
 rfc8578.txt https://www.ngmn.org/fileadmin/user_upload/NGMN_RANEV_D3_CoMP_Evaluation_and_Enhancement_v2.0.pdf Socket error HTTP Error 404: Not Found
+rfc8578.txt https://standards.ieee.org/findstds/standard/1588-2008.html Socket error HTTP Error 404: Not Found
+rfc8578.txt https://standards.ieee.org/standard/802_15_4-2015.html Socket error HTTP Error 404: Not Found
+rfc8578.txt https://standards.ieee.org/standard/802_1CM-2018.html Socket error HTTP Error 404: Not Found
 rfc8578.txt http://www.enerlon.com/JobAids/Lontalk%20Protocol%20Spec.pdf Socket error HTTP Error 404: Not Found
 rfc8578.txt https://www.ngmn.org/fileadmin/ngmn/content/downloads/Technical/2015/NGMN_5G_White_Paper_V1_0.pdf Socket error HTTP Error 404: Not Found
 rfc8578.txt https://www.ngmn.org/fileadmin/user_upload/NGMN_RANEV_D1_C-RAN_Fronthaul_Requirements_v1.0.pdf Socket error HTTP Error 404: Not Found
-rfc8578.txt https://www.itu.int/rec/T-REC-G.8261 Socket error <urlopen error [Errno 11002] getaddrinfo failed>
 rfc8578.txt https://portal.3gpp.org/desktopmodules/ Socket error HTTP Error 403: Forbidden
 
 566 RFCs processed
-1536 good URLs found
-93 non-existent domains found
-303 failing URLs found
-URLcheck ended at 2023-05-26 14:39:08 UTC+1200
+1544 good URLs found
+88 non-existent domains found
+300 failing URLs found
+7 gopher or wais URLs found
+URLcheck ended at 2023-05-31 14:16:24 UTC+1200

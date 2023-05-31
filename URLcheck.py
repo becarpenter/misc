@@ -4,6 +4,9 @@
 """Look for broken URLs in RFCs"""
 
 # Version: 2023-05-26
+# Version: 2023-05-30 - added DNS retry, gopher/wais count,
+#                       certificate mitigations,
+#                       better heuristic for non-delimited URLs
 
 ########################################################
 # Copyright (C) 2023 Brian E. Carpenter.                  
@@ -59,6 +62,10 @@
 
 # Checking links in non-txt versions is left for future work.
 
+# Certificate validity is a tricky area. Two tricks found
+# on StackOverflow are in the code. Also, to run on Windows,
+# do pip install pip_system_certs
+
 from tkinter import Tk
 from tkinter.filedialog import askdirectory
 from tkinter.messagebox import askokcancel, askyesno, showinfo
@@ -68,6 +75,9 @@ from os import listdir, chdir, getcwd
 from os.path import isfile, join
 #import os
 import urllib.request
+
+import ssl
+import certifi
 
 #import binascii
 
@@ -120,12 +130,12 @@ def wf(f,l):
 
 def check(link, recurse=False):
     """Check a URL and log results."""
-    ##Patched out recursive call for https instead of http##"""
-    global url, goodies, baddies, baddoms, split_warn, headers
+    ##Patched out recursive call for https instead of http - didn't solve anything##
+    global url, goodies, baddies, baddoms, split_warn, headers, context
     
     request = urllib.request.Request(link, headers=headers)
     try:
-        response = urllib.request.urlopen(request, timeout=30).getcode() 
+        response = urllib.request.urlopen(request, context=context, timeout=30).getcode() 
         if response == 200:
             if recurse:
                 goodies.append(url + "(needs https)")
@@ -134,17 +144,24 @@ def check(link, recurse=False):
         else:
             logit(f+" "+link+split_warn+" "+"HTTP response"+" "+str(response))
             baddies.append(url)
-        time.sleep(5)
+        time.sleep(pause)
     except Exception as E:
-        logit(f+" "+link+split_warn+" "+"Socket error"+" "+str(E))
         if 'getaddrinfo failed' in str(E):
-            baddoms.append(dom)
+            if recurse:
+                logit(f+" "+link+split_warn+" "+"Socket error"+" "+str(E))
+                baddoms.append(dom)
+            else:
+                #second try at DNS
+                time.sleep(DNS_pause)
+                check(url, recurse=True)
+            
 ##        elif ( 'certificate verify failed' in str(E) in str(E) )\
 ##             and 'http://' in url and not recurse:
 ##            check(url.replace('http://', 'https://'), recurse=True)
-        else:                        
+        else:
+            logit(f+" "+link+split_warn+" "+"Socket error"+" "+str(E))
             baddies.append(url)
-        time.sleep(5)
+        time.sleep(pause)
 
 ######### Startup
 
@@ -156,13 +173,22 @@ written = 0      # counts files written
 goodies = []     # OK URLs
 baddies = []     # Failed URLs
 baddoms = []     # Failed domains
+gophwais = 0     # count gopher/wais URLs
 rfc_count = 0    # RFCs processed
+
+pause = 5        # seconds to wait between attempts
+DNS_pause = 20   # seconds to wait after getaddrinfo fail
 
 #Horrible hack to avoid spurious 403 errors on redirected URLs
 # - we pretend to be a browser. Thank you StackOverflow!
 
 headers = {}
 headers['User-Agent'] = 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17'
+
+#Ensure certificates available. Again, thank you StackOverflow!
+
+#print("CA file", certifi.where())
+context = ssl.create_default_context(cafile=certifi.where())
 
 
 #Announce
@@ -210,6 +236,12 @@ for f in files:
             #case-normalize the schemes
             line = line.replace("HTTP://","http://").replace("HTTPS://","https://").replace("FTP://","ftp://")
             if not "http://" in line and not "https://" in line and not "ftp://" in line:
+                if "wais://" in line.lower():
+                    logit(f+" wais URL seen")
+                    gophwais += 1
+                elif "gopher://" in line.lower():
+                    logit(f+" gopher URL seen")
+                    gophwais += 1
                 continue
 
             #look for possible terminator
@@ -264,15 +296,19 @@ for f in files:
 
             #get rid of spurious stuff          
             url = url.strip().split()[0]
-             
+
+            #get rid of unmatched delimiters
+            
+            if url.endswith(")."): #both .) and ). have been seen
+                url = url[:-2]
+            if url.endswith(")"):
+                url = url[:-1]
             if url.endswith("."):
+                url = url[:-1]
+            if url.endswith(">"):
                 url = url[:-1]
             if url.endswith(","):
                 url = url[:-1]                      
-            if url.endswith(".)"):
-                url = url[:-2]
-            if url.endswith('".'):
-                url = url[:-2]
             if url.endswith('"'):
                 url = url[:-1]
             if url.endswith("'"):
@@ -302,6 +338,7 @@ logit("\n"+str(rfc_count)+" RFCs processed")
 logit(str(len(goodies))+" good URLs found")
 logit(str(len(baddoms))+" non-existent domains found")
 logit(str(len(baddies))+" failing URLs found")
+logit(str(gophwais)+" gopher or wais URLs found")
 logit("URLcheck ended at "
       +time.strftime("%Y-%m-%d %H:%M:%S UTC%z",time.localtime()))
     
