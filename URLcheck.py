@@ -7,6 +7,7 @@
 # Version: 2023-05-30 - added DNS retry, gopher/wais count,
 #                       certificate mitigations,
 #                       better heuristic for non-delimited URLs
+# Version: 2023-06-03 - fix for Linux socket API error text
 
 ########################################################
 # Copyright (C) 2023 Brian E. Carpenter.                  
@@ -146,7 +147,7 @@ def check(link, recurse=False):
             baddies.append(url)
         time.sleep(pause)
     except Exception as E:
-        if 'getaddrinfo failed' in str(E):
+        if 'getaddrinfo failed' in str(E) or 'Name or service not known' in str(E):
             if recurse:
                 logit(f+" "+link+split_warn+" "+"Socket error"+" "+str(E))
                 baddoms.append(dom)
