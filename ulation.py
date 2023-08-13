@@ -63,7 +63,8 @@
 ########################################################
 ########################################################"""
 
-#Version 2023-08-13
+#Version 2023-08-13 - original
+#Version 2023-08-14 - added case for Linux [Erik Nygren]
 
 import os
 import ctypes
@@ -216,7 +217,7 @@ def tryping(sa, da):
         for l in os.popen(cmd):
             if "not known" in l:
                 return("No DNS")
-            elif "Beyond scope" in l:
+            elif "Beyond scope" in l or "No route" in l:
                 return("No route")
             elif " 0 received" in l:
                 return("No reply")
