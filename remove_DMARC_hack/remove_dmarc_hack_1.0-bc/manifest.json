@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Remove DMARC hack",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0",
+  "default_locale": "en",
+  "author": "BC",
+  "homepage_url": "http://www.cs.auckland.ac.nz/~brian/",
+  "applications": {
+    "gecko": {
+      "id": "RemoveDMARChack@BC",
+      "strict_min_version": "74.0a1"
+    }
+  }, 
+  "permissions": [
+    "compose"
+  ],
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+    "icons": {
+    "64": "icons/broom-64.png"
+  }
+}

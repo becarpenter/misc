@@ -1,0 +1,6 @@
+{
+  "extensionDescription": {
+    "message": "Remove IETF DMARC hack from addresses before sending mail.",
+    "description": "Description of the add-on."
+  }
+}
