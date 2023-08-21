@@ -3,11 +3,11 @@
 This is a Thunderbird add-on that automatically changes any To:, Cc: or Bcc:
 address on outgoing mail from the format
 
- - user=40example.com@dmarc.ietf.org
+ - `user=40example.com@dmarc.ietf.org`
 
 to
 
- - user@example.com
+ - `user@example.com`
 
 which looks nicer but, more importantly, avoids a pointless hop via the
 IETF mail service, which does no good to anybody. You won't see the change
