@@ -12,8 +12,7 @@ The PDF edition has ISBN 0-979-8-89269-031-7
 
 
 
-Version captured at 2024-01-14 10:43:28 UTC+1300
-<div style="page-break-after: always;"></div>
+Version captured at 2024-01-14 11:01:44 UTC+1300
 # book6: A Collaborative IPv6 Book.
 <img src="./book6logo.png" alt="book6 logo" width="200px" height="auto"/>
 
@@ -94,7 +93,6 @@ and a [citation index](#book6-Citation-Index).
 * Section Template
 * Markdown Usage
 * Last Section
-<div style="page-break-after: always;"></div>
 
 
 
@@ -114,7 +112,6 @@ and a [citation index](#book6-Citation-Index).
 
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Foreword
 
 This book is written and maintained by a team of volunteers, who are all
@@ -123,7 +120,6 @@ hope that the book will be useful and up to date as IPv6 usage in the
 Internet continues to grow.
 
 
-<div style="page-break-after: always;"></div>
 ## How to use this book
 
 This book is, and we hope always will be, a work in progress. It is
@@ -152,7 +148,6 @@ a new page. To avoid this, with most browsers you can use CTRL+click (on Windows
 and Linux) or CMD+click (on MacOS).
 
 
-<div style="page-break-after: always;"></div>
 ## How a user sees IPv6
 
 The answer should be: *they don't*. In an ideal world, users would never
@@ -177,7 +172,6 @@ try https://ipv6test.google.com/.
 GitHub, where this book is hosted, supports IPv6 for many things, but not everything.
 
 
-<div style="page-break-after: always;"></div>
 ## How an application programmer sees IPv6
 
 In a very theoretical world, an application programmer could rely on a
@@ -231,7 +225,6 @@ discussed in
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## How a network operations center sees IPv6
 
 This is really the topic of this entire book. In the long term, we
@@ -265,7 +258,6 @@ The
 will also be relevant to NOCs.
 
 
-<div style="page-break-after: always;"></div>
 ## How to keep up to date
 
 The intention is for this book to be kept up to date by its user
@@ -295,7 +287,6 @@ Also see the
 chapter for more explanation about RFCs and for other resources.
 
 
-<div style="page-break-after: always;"></div>
 ## How to contribute
 
 If you find an error or a gap in this book, or a recommendation that you
@@ -315,7 +306,6 @@ and [instructions](https://github.com/becarpenter/book6/blob/main/99.%20Chapter%
 Your contributions will be reviewed by an editorial team.
 
 
-<div style="page-break-after: always;"></div>
 ## Acknowledgments
 
 Contributors via GitHub may be identified at
@@ -335,7 +325,6 @@ Other direct and indirect contributors (mainly via email) include:
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Why version 6
 
 This section is mainly historical.
@@ -459,7 +448,6 @@ to an April fool's day joke
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # IPv6 Basic Technology
 
 The main standard for IPv6 is
@@ -512,7 +500,6 @@ auto-configuration, so the reader is advised to read in sequence.
 <!-- Link lines generated automatically; do not delete -->
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Packet Format
 
 IPv6 packets are transmitted independently of each other even if they
@@ -619,7 +606,6 @@ also worth noting that Wireshark knows all about IPv6 header formats.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Addresses
 
 A 128 bit address is big enough that, assuming the adoption of wise
@@ -956,7 +942,6 @@ never appear on the real Internet.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Layer 2 functions
 
 Every IPv6 packet has to be wrapped in a Layer 2 packet (or frame) for
@@ -1023,7 +1008,6 @@ today and best practices are not yet established.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Address resolution
 
 When an IPv6 node "A" becomes aware of the IPv6 address of another node
@@ -1115,7 +1099,6 @@ might be applied more generally in future.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Auto-configuration
 
 One design goal for IPv6 was that it could be used "out of the box" in
@@ -1256,7 +1239,6 @@ section.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Managed configuration
 
 Host addresses and other IPv6 parameters can be configured using the
@@ -1353,7 +1335,6 @@ information to communicate with other on-link hosts.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## DNS
 
 We assume that the reader has a good general understanding of the Domain
@@ -1424,7 +1405,6 @@ Some statistics on AAAA records and reachability may be found at
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Routing
 
 This section is a short introduction to a complex topic. IPv6 packets
@@ -1552,7 +1532,6 @@ along a packet's path. These are briefly explained in
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Transport protocols
 
 Applications can readily be updated to work in dual stack mode, because
@@ -1599,7 +1578,6 @@ same applies to ECN (Explicit Congestion Notification
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Extension headers and options
 
 As explained in
@@ -1678,7 +1656,6 @@ recommendations are in
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Traffic class and flow label
 
 The Traffic Class in every IPv6 packet is a byte also known as the
@@ -1716,7 +1693,6 @@ and
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # 3. Coexistence with Legacy IPv4
 
 The notion of a utopian IPv6-only world is a noble goal. However, as
@@ -1841,7 +1817,6 @@ is out of scope.
 
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Dual stack scenarios
 
 We must distinguish the original model of dual stack deployment from the
@@ -2054,7 +2029,6 @@ also gives more detail on IPv4aaS.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Tunnels
 
 At its simplest, two IPv6 hosts or networks can be joined together via
@@ -2106,7 +2080,6 @@ gaps. Interested readers can study a 125 page
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Translation and IPv4 as a service
 
 When an operator wants to reduce infrastructure costs by running a
@@ -2297,7 +2270,6 @@ Like NPTv6, NAT66 should be used only when necessary or required. Moreover, is i
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Obsolete techniques
 
 As IPv6 has matured and people have gained operational experience,
@@ -2349,7 +2321,6 @@ preprint [here](https://dataplane.org/jtk/publications/kgkp-pam-21.pdf).
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## IPv6 primary differences from IPv4
 
 This book intentionally describes IPv6 as the "new normal" IP protocol,
@@ -2426,7 +2397,6 @@ probably smaller.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # 4. Security
 
 Security has ever-growing importance in general and the IP protocol has
@@ -2482,7 +2452,6 @@ aspects.
 
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Layer 2 considerations
 
 IPv6 is comparatively flexible at the link layer. Flexibility typically
@@ -2573,7 +2542,6 @@ user activity, for the same reason that it protects privacy.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Filtering
 
 Filtering is a big part of safe Internet connection. IPv6 filtering in
@@ -2678,7 +2646,6 @@ man-in-the-middle attack.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Topology obfuscation
 
 There are various operational contexts in which an operator needs to
@@ -2742,7 +2709,6 @@ prefix use is frequently employed.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # 5. Network Design
 
 A first very general remark is that since IPv6 is a datagram protocol,
@@ -2796,7 +2762,6 @@ combined with subnet design.
 <!-- Link lines generated automatically; do not delete -->
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Address Planning
 
 As you would expect, in IPv6 networks all nodes may have globally unique
@@ -2969,7 +2934,6 @@ Although quite old, the following book may be helpful:
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # Management and Operations
 
 *This chapter is at an early stage and is expected to grow dynamically
@@ -3067,7 +3031,6 @@ carrier, enterprise and data center scenarios.
 
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Address and Prefix Management
 
 Section text goes here
@@ -3075,7 +3038,6 @@ Section text goes here
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Remote configuration
 
 Section text goes here
@@ -3083,7 +3045,6 @@ Section text goes here
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Benchmarking and monitoring
 
 Tody, IPv6 monitoring is often forgotten, ignored or done from the wrong
@@ -3121,7 +3082,6 @@ processes. It may also be an oportunity to implement more automation.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Routing operation
 
 Section text goes here
@@ -3129,7 +3089,6 @@ Section text goes here
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Security operation
 
 Section text goes here
@@ -3137,7 +3096,6 @@ Section text goes here
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Multi-prefix operation
 
 As mentioned in
@@ -3259,7 +3217,6 @@ for its ULA, the latter only being present in local split-horizon DNS.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Multihoming
 
 Multihoming means configuring a site in such a way that it is connected
@@ -3414,7 +3371,6 @@ multipath solutions. Discussion continues in the IETF.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Energy consumption
 
 There is no firm evidence whether IPv6 has net energy consumption
@@ -3442,7 +3398,6 @@ Compression and Fragmentation (SCHC)
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Basic Windows commands
 
 The section text goes here, all in Markdown. Don't try to insert or
@@ -3452,7 +3407,6 @@ later.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # Case Studies
 
 This chapter will contain a variety of short case studies, based on real
@@ -3480,7 +3434,6 @@ If you have already published such a description, just a pointer will be fine.
 <!-- Link lines generated automatically; do not delete -->
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 # Deployment Status
 
 <!-- Link lines generated automatically; do not delete -->
@@ -3494,7 +3447,6 @@ If you have already published such a description, just a pointer will be fine.
 
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Status
 
 When speaking of IPv6, a question immediately comes up: "How many people
@@ -3553,7 +3505,6 @@ September 2022, not that far from the "psychological" threshold of 50%.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Deployment by carriers
 
 All the organizations providing or using Internet connectivity services
@@ -3607,7 +3558,6 @@ UK.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Deployment in the home
 
 It is hard to estimate what fraction of home users have IPv6
@@ -3648,7 +3598,6 @@ These complex topics are out of scope for this book.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Deployment in the enterprise
 
 Measuring the adoption of IPv6 in the enterprise domain is not
@@ -3755,7 +3704,6 @@ space may require more effort and expense, or may not be possible.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # 9. Troubleshooting
 
 If you know what should be written here, please write it! [How to contribute.](https://github.com/becarpenter/book6/blob/main/1.%20Introduction%20and%20Foreword/How%20to%20contribute.md#how-to-contribute) 
@@ -3767,7 +3715,6 @@ If you know what should be written here, please write it! [How to contribute.](h
 <!-- Link lines generated automatically; do not delete -->
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## Advanced Troubleshooting
 
 If you know what should be written here, please write it! [How to contribute.](https://github.com/becarpenter/book6/blob/main/1.%20Introduction%20and%20Foreword/How%20to%20contribute.md#how-to-contribute) 
@@ -3775,7 +3722,6 @@ If you know what should be written here, please write it! [How to contribute.](h
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Tools
 
 If you know what should be written here, please write it! [How to contribute.](https://github.com/becarpenter/book6/blob/main/1.%20Introduction%20and%20Foreword/How%20to%20contribute.md#how-to-contribute)
@@ -3783,7 +3729,6 @@ If you know what should be written here, please write it! [How to contribute.](h
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # Further Reading
 
 There are massive amounts of information about IPv6 "out there" on the
@@ -3921,7 +3866,6 @@ deployment options. Here are some starting points:
 <!-- Link lines generated automatically; do not delete -->
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## RFC bibliography
 
 This section is a machine-generated list of all current RFCs that
@@ -4929,7 +4873,6 @@ RFCbib6 run at 2023-12-30 15:29:10 UTC+1300 (447 RFCs found)
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # 99. Chapter Template
 
 This chapter shows how to write a new chapter. It is intentionally
@@ -5038,7 +4981,6 @@ _Pro tip:_ Adding a new chapter, renaming or deleting a section or chapter, or m
 
 
 ### [<ins>Back to main Contents</ins>](#contents)
-<div style="page-break-after: always;"></div>
 ## First Section
 
 Section text goes here
@@ -5046,7 +4988,6 @@ Section text goes here
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Section Template
 
 The section text goes here, all in Markdown. Don't try to insert or
@@ -5056,7 +4997,6 @@ later.
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Markdown Usage
 
 The basics of using the GitHub dialect of markdown are
@@ -5152,7 +5092,6 @@ covers".
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 ## Last Section
 
 Section text goes here
@@ -5160,7 +5099,6 @@ Section text goes here
 <!-- Link lines generated automatically; do not delete -->
 
 
-<div style="page-break-after: always;"></div>
 # book6 Main Index
 <img src="./book6logo.png" alt="book6 logo" width="200px" height="auto"/>
 
@@ -5586,7 +5524,6 @@ If you think any keywords are missing, please raise an issue (use link on GitHub
 [●](#deployment-in-the-home)
 
 
-<div style="page-break-after: always;"></div>
 # book6 Citation Index
 <img src="./book6logo.png" alt="book6 logo" width="200px" height="auto"/>
 
@@ -6006,4 +5943,3 @@ This index was created automatically, so it's dumb. It has links to each section
 [STD87 ●](#extension-headers-and-options)
 
 
-<div style="page-break-after: always;"></div>
