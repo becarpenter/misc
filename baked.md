@@ -12,7 +12,7 @@ The PDF edition has ISBN 0-979-8-89269-031-7
 
 
 
-Version captured at 2024-01-14 15:10:41 UTC+1300
+Version captured at 2024-01-14 15:26:51 UTC+1300
 <!-- page break -->
 # book6: A Collaborative IPv6 Book.
 <img src="./book6logo.png" alt="book6 logo" width="200px" height="auto"/>
@@ -3758,7 +3758,7 @@ space may require more effort and expense, or may not be possible.
 
 ### [<ins>Previous</ins>](#deployment-in-the-home) [<ins>Chapter Contents</ins>](#deployment-status)
 <!-- page break -->
-# 9. Troubleshooting
+# Troubleshooting
 
 If you know what should be written here, please write it! [How to contribute.](https://github.com/becarpenter/book6/blob/main/1.%20Introduction%20and%20Foreword/How%20to%20contribute.md#how-to-contribute) 
 
