@@ -12,7 +12,7 @@ The PDF edition has ISBN 0-979-8-89269-031-7
 
 
 
-Version captured at 2024-01-14 14:48:58 UTC+1300
+Version captured at 2024-01-14 15:08:42 UTC+1300
 <!-- page break -->
 # book6: A Collaborative IPv6 Book.
 <img src="./book6logo.png" alt="book6 logo" width="200px" height="auto"/>
@@ -97,23 +97,23 @@ and a [citation index](#book6-Citation-Index).
 <!-- page break -->
 # Introduction and Foreword
 
-## [Foreword](#foreword)
+Foreword](#foreword)
 
-## [How to use this book](#how-to-use-this-book)
+How to use this book](#how-to-use-this-book)
 
-## [How a user sees IPv6](#how-a-user-sees-ipv6)
+How a user sees IPv6](#how-a-user-sees-ipv6)
 
-## [How an application programmer sees IPv6](#how-an-application-programmer-sees-ipv6)
+How an application programmer sees IPv6](#how-an-application-programmer-sees-ipv6)
 
-## [How a network operations center sees IPv6](#how-a-network-operations-center-sees-ipv6)
+How a network operations center sees IPv6](#how-a-network-operations-center-sees-ipv6)
 
-## [How to keep up to date](#how-to-keep-up-to-date)
+How to keep up to date](#how-to-keep-up-to-date)
 
-## [How to contribute](#how-to-contribute)
+How to contribute](#how-to-contribute)
 
-## [Acknowledgments](#acknowledgments)
+Acknowledgments](#acknowledgments)
 
-## [Why version 6](#why-version-6)
+Why version 6](#why-version-6)
 
 ### [<ins>Back to main Contents</ins>](#list-of-contents)
 <!-- page break -->
@@ -489,27 +489,27 @@ The rest of this chapter covers various basic aspects of IPv6. Some
 topics are very closely linked, especially address resolution and
 auto-configuration, so the reader is advised to read in sequence.
 
-## [Packet Format](#packet-format)
+Packet Format](#packet-format)
 
-## [Addresses](#addresses)
+Addresses](#addresses)
 
-## [Layer 2 functions](#layer-2-functions)
+Layer 2 functions](#layer-2-functions)
 
-## [Address resolution](#address-resolution)
+Address resolution](#address-resolution)
 
-## [Auto-configuration](#auto-configuration)
+Auto-configuration](#auto-configuration)
 
-## [Managed configuration](#managed-configuration)
+Managed configuration](#managed-configuration)
 
-## [DNS](#dns)
+DNS](#dns)
 
-## [Routing](#routing)
+Routing](#routing)
 
-## [Transport protocols](#transport-protocols)
+Transport protocols](#transport-protocols)
 
-## [Extension headers and options](#extension-headers-and-options)
+Extension headers and options](#extension-headers-and-options)
 
-## [Traffic class and flow label](#traffic-class-and-flow-label)
+Traffic class and flow label](#traffic-class-and-flow-label)
 
 <!-- Link lines generated automatically; do not delete -->
 
@@ -1832,15 +1832,15 @@ is out of scope.
 
 <!-- Link lines generated automatically; do not delete -->
 
-## [Dual stack scenarios](#dual-stack-scenarios)
+Dual stack scenarios](#dual-stack-scenarios)
 
-## [Tunnels](#tunnels)
+Tunnels](#tunnels)
 
-## [Translation and IPv4 as a service](#translation-and-ipv4-as-a-service)
+Translation and IPv4 as a service](#translation-and-ipv4-as-a-service)
 
-## [Obsolete techniques](#obsolete-techniques)
+Obsolete techniques](#obsolete-techniques)
 
-## [IPv6 primary differences from IPv4](#ipv6-primary-differences-from-ipv4)
+IPv6 primary differences from IPv4](#ipv6-primary-differences-from-ipv4)
 
 ### [<ins>Back to main Contents</ins>](#list-of-contents)
 <!-- page break -->
@@ -2477,11 +2477,11 @@ aspects.
 
 <!-- Link lines generated automatically; do not delete -->
 
-## [Layer 2 considerations](#layer-2-considerations)
+Layer 2 considerations](#layer-2-considerations)
 
-## [Filtering](#filtering)
+Filtering](#filtering)
 
-## [Topology obfuscation](#topology-obfuscation)
+Topology obfuscation](#topology-obfuscation)
 
 ### [<ins>Back to main Contents</ins>](#list-of-contents)
 <!-- page break -->
@@ -2791,7 +2791,7 @@ approach will vary.
 This chapter continues with a discussion of address planning, inevitably
 combined with subnet design.
 
-## [Address Planning](#address-planning)
+Address Planning](#address-planning)
 
 <!-- ## Name (add plain section names like that) -->
 
@@ -3048,25 +3048,25 @@ tools apply to IPv6, and then continues by discussing some specific
 topics where IPv6 presents its own challenges. The emphasis is on
 carrier, enterprise and data center scenarios.
 
-## [Address and Prefix Management](#address-and-prefix-management)
+Address and Prefix Management](#address-and-prefix-management)
 
-## [Remote configuration](#remote-configuration)
+Remote configuration](#remote-configuration)
 
-## [Benchmarking and monitoring](#benchmarking-and-monitoring)
+Benchmarking and monitoring](#benchmarking-and-monitoring)
 
-## [Routing operation](#routing-operation)
+Routing operation](#routing-operation)
 
-## [Security operation](#security-operation)
+Security operation](#security-operation)
 
-## [Multi-prefix operation](#multi-prefix-operation)
+Multi-prefix operation](#multi-prefix-operation)
 
-## [Multihoming](#multihoming)
+Multihoming](#multihoming)
 
-## [Energy consumption](#energy-consumption)
+Energy consumption](#energy-consumption)
 
 <!-- Link lines generated automatically; do not delete -->
 
-## [Basic Windows commands](#basic-windows-commands)
+Basic Windows commands](#basic-windows-commands)
 
 ### [<ins>Back to main Contents</ins>](#list-of-contents)
 <!-- page break -->
@@ -3487,13 +3487,13 @@ If you have already published such a description, just a pointer will be fine.
 
 <!-- Link lines generated automatically; do not delete -->
 
-## [Status](#status)
+Status](#status)
 
-## [Deployment by carriers](#deployment-by-carriers)
+Deployment by carriers](#deployment-by-carriers)
 
-## [Deployment in the home](#deployment-in-the-home)
+Deployment in the home](#deployment-in-the-home)
 
-## [Deployment in the enterprise](#deployment-in-the-enterprise)
+Deployment in the enterprise](#deployment-in-the-enterprise)
 
 ### [<ins>Back to main Contents</ins>](#list-of-contents)
 <!-- page break -->
@@ -3762,9 +3762,9 @@ space may require more effort and expense, or may not be possible.
 
 If you know what should be written here, please write it! [How to contribute.](https://github.com/becarpenter/book6/blob/main/1.%20Introduction%20and%20Foreword/How%20to%20contribute.md#how-to-contribute) 
 
-## [Advanced Troubleshooting](#advanced-troubleshooting)
+Advanced Troubleshooting](#advanced-troubleshooting)
 
-## [Tools](#tools)
+Tools](#tools)
 
 <!-- Link lines generated automatically; do not delete -->
 
@@ -3918,7 +3918,7 @@ deployment options. Here are some starting points:
 
 - more TBD
 
-## [RFC bibliography](#rfc-bibliography)
+RFC bibliography](#rfc-bibliography)
 
 <!-- Link lines generated automatically; do not delete -->
 
@@ -5031,13 +5031,13 @@ chapter directory, and makeBook will add it to the chapter contents.
 
 _Pro tip:_ Adding a new chapter, renaming or deleting a section or chapter, or moving a section from one chapter to another, etc., are not automated at present and may require a good deal of manual work. For that, see the [special instructions](#chapterreorg).
 
-## [First Section](#first-section)
+First Section](#first-section)
 
-## [Section Template](#section-template)
+Section Template](#section-template)
 
-## [Markdown Usage](#markdown-usage)
+Markdown Usage](#markdown-usage)
 
-## [Last Section](#last-section)
+Last Section](#last-section)
 
 ### [<ins>Back to main Contents</ins>](#list-of-contents)
 <!-- page break -->
