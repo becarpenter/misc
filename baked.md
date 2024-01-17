@@ -16,14 +16,24 @@ Released under the Creative Commons Attribution 4.0 license, known as CC BY 4.0.
 
 
 
-Version captured at 2024-01-14 15:44:57 UTC+1300
+
+
+
+
+
+
+
+
+
+
+Version captured at 2024-01-17 14:20:55 UTC+1300
 <!-- page break -->
 # book6: A Collaborative IPv6 Book.
 <img src="./book6logo.png" alt="book6 logo" width="200px" height="auto"/>
 
 This is the current list of contents. It will change as the book evolves.
-There is also an [index](#book6-Main-Index),
-and a [citation index](#book6-Citation-Index).
+There is also an [index](#book6-main-index),
+and a [citation index](#book6-citation-index).
 
 # List of Contents
 
@@ -151,7 +161,7 @@ probably not read from cover to cover. Design your own path through the
 book.
 
 There is also an
-[index](#index).
+[index](#book6-main-index).
 
 A little tip: For some reason, GitHub doesn't support automatically opening a
 link in a new browser tab or window, so clicking on links will always take you to
@@ -5181,8 +5191,9 @@ RFCbib6 run at 2023-12-30 15:29:10 UTC+1300 (447 RFCs found)
 This chapter shows how to write a new chapter. It is intentionally
 listed in the contents of the book itself, and is intended to be a
 living chapter of a living book. You should also check
-[CONTRIBUTING](#contributing) and [LICENSE](#license) before
-contributing.
+[CONTRIBUTING](https://github.com/becarpenter/book6/blob/main/CONTRIBUTING.md) 
+and [LICENSE](https://github.com/becarpenter/book6/blob/main/LICENSE.md)
+before contributing.
 
 The second section in this chapter shows how to write a new section.
 
@@ -5273,7 +5284,8 @@ So, to repeat: add a new ## item to the chapter introduction, and
 makeBook will create the necessary .md file. Add a new .md file to the
 chapter directory, and makeBook will add it to the chapter contents.
 
-_Pro tip:_ Adding a new chapter, renaming or deleting a section or chapter, or moving a section from one chapter to another, etc., are not automated at present and may require a good deal of manual work. For that, see the [special instructions](#chapterreorg).
+_Pro tip:_ Adding a new chapter, renaming or deleting a section or chapter, or moving a section from one chapter to another, etc., are not automated at present and may require a good deal of manual work. For that, see the
+[special instructions](https://github.com/becarpenter/book6/blob/main/utilities/chapterReorg.md).
 
 [First Section](#first-section)
 
