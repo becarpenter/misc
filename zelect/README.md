@@ -39,7 +39,7 @@ implementation only accepts mDNS responses from port 5353. However,
 even that doesn't work because it seems that avahi
 ignores multicasts from its own host (`IPPROTO_IPV6 IPV6_MULTICAST_LOOP 0`,
 apparently). So even fabricating mDNS packets with _scapy_ doesn't work.
-Even sending such facbricated packets from another machine doesn't work.
+Even sending such fabricated packets from another machine doesn't work.
 Also _avahi-publish-address_ cannot possibly work for LLAs, because it
 uses _inet_pton()_ which doesn't understand zone identifiers at all.
 
