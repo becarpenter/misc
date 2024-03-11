@@ -5,8 +5,8 @@
 _zelect_ is a Python3 program that abuses mDNS to synthesize the DNS
 name _test.local_ for any complete IPv6 link-local address (LLA)
 entered by the user in a simple command line interface
-(which incidentally conforms to _draft-carpenter-6man-zone-ui_).
-This program is a hack inspired by _draft-schinazi-httpbis-link-local-uri-bcp_.
+(which incidentally conforms to [draft-carpenter-6man-zone-ui](https://datatracker.ietf.org/doc/draft-carpenter-6man-zone-ui/)).
+This program is a hack inspired by [draft-schinazi-httpbis-link-local-uri-bcp](https://datatracker.ietf.org/doc/draft-schinazi-httpbis-link-local-uri-bcp/).
 
 At present it only works properly on Windows 10, where it can use
 a regular socket call to send a synthetic unsolicited mDNS
@@ -14,7 +14,7 @@ response message. While it is running, the user can perform
 `ping test.local` and it goes to the LLA supplied.
 
 More interestingly, all the browsers tested so far on Windows 10 support
-_http://test.local_ or _https://test.local_ correctly - that is, they
+http://test.local or https://test.local correctly - that is, they
 attempt an HTTP(S) connection to the target LLA. Typically it fails
 with a reset, which is the expected result.
 
@@ -24,8 +24,8 @@ to not working.
 This was tested on Windows 10 22H2 (build 19045.4046). No promises
 for any other Windows version.
 
-An unintended side effect is that while `zelect` is running, all other
-Windows hosts on the same LAN will also see the `test.local` name
+An unintended side effect is that while _zelect_ is running, all other
+Windows hosts on the same LAN will also see the _test.local_ name
 in mDNS.
 
 Obviously, this is a hack, you use it at your own risk.
@@ -49,6 +49,10 @@ in mDNS. In other words, the Linux code is working, but Linux
 isn't listening.
 
 ## Example run
+
+Download _zelect.py_ and double click on the file, assuming you
+have Python 3 and the standard libraries installed. (Tested on
+Python 3.11.)
 
 ```
 This is zelect, which abuses mDNS to synthesize the DNS
@@ -81,7 +85,7 @@ Ping statistics for fe80::2e3a:fdff:fea4:dde7%24:
 Approximate round trip times in milli-seconds:
     Minimum = 1ms, Maximum = 1ms, Average = 1ms
 ```
-And then press enter in _zelect_'s window:
+And then press Enter in _zelect_'s window:
 
 ``` 
 Stopping...
