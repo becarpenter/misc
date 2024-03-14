@@ -47,8 +47,7 @@
 ########################################################
 ########################################################
 
-# Version: 20240311 - original
-# Version: 20240314 - deleted a misleading comment
+
 
 import socket
 import ipaddress
@@ -57,8 +56,8 @@ import time
 import os
 import threading
 windows = (os.name == "nt")
-if not windows:
-    print("Warning - this program doesn't do what it should on Linux.")
+win_scapy = True
+if (not windows) or win_scapy:
     try:
         from scapy.all import *
     except:
@@ -89,13 +88,19 @@ if not windows:
 ##0001       # class
 ##0000012c   # TTL (5 minutes)
 ##0010       # RD length (16)
-##fe800000000000000000000000000001  # packed target address (16 bytes)
+##fe800000000000000000000000000001  # packed address (16 bytes)
 
-## And here is the response message in hexadecimal, without the target address
-mdns_response = "0000800000000001000000000474657374056c6f63616c00001c00010000012c0010"
+## And here is the response message in hexadecimal
+## mdns_response = "0000800000000001000000000474657374056c6f63616c00001c00010000012c0010"
+#### with cache-flush 
+mdns_response = "0000800100000001000000000474657374056c6f63616c00001c80010000012c0010"
+#### with broken message to trigger diagnostic
+##mdns_response = "0000800000000001000000000474657374056c6f63616c00001c00010000012c0010"
+
 
 
 mdns_addr = 'ff02::fb'
+## mdns_addr4 = '224.0.0.251'
 mdns_port = 5353
 
 zzzz = []    # list of valid zone indexes (only needed for Windows)
@@ -118,7 +123,7 @@ def build_zones():
                     zzzz.append(_zid)
 
 class sender(threading.Thread):
-    """Send the mDNS response repeatedly"""
+    """Send the mDNS response"""
     def __init__(self):
         threading.Thread.__init__(self, daemon=True)
 
@@ -126,13 +131,9 @@ class sender(threading.Thread):
         while ready:
             # Send an unsolicited mDNS response
             # Repeat to bypass cache timeout
-            if windows:
-                try:
-                    mcsock.sendto(msg,0,(mdns_addr, mdns_port))
-                except Exception as e:
-                    print("Socket send error: ", e)
-            else:
-                # The POSIX branch, using scapy. This doesn't work as intended on Linux.
+            if windows: # and not win_scapy:
+                mcsock.sendto(msg,0,(mdns_addr, mdns_port))
+            if (not windows) or win_scapy:
                 pkt = IPv6(src=scapy_src,dst=mdns_addr,hlim=255)/UDP(sport=mdns_port,dport=mdns_port)/Raw(load=msg)
                 #or, for use with sendp():
                 #pkt = Ether(dst='33:33:00:00:00:fb')/IPv6 ...
@@ -141,18 +142,23 @@ class sender(threading.Thread):
                 
                 try:
                     send(pkt, iface=zid, verbose=0)
-                    # Wireshark results suggested that iface doesn't work properly on Linux.
-                    # Also it seemed that avahi-daemon doesn't receive the host's own
-                    # multicasts, and doesn't apply the mDNS response even
-                    # when sent by another machine (and also and doesn't obey 
-                    # avahi-publish-address correctly).
                 except Exception as e:
-                    print("Scapy send error: ", e)
-            time.sleep(1)
+                    print(e)
+            time.sleep(2)
+        if (not windows) or win_scapy:
+            # Try to delete entry
+            pkt = IPv6(src=scapy_src,dst=mdns_addr,hlim=255)/UDP(sport=mdns_port,dport=mdns_port)/Raw(load=msg_cancel)            
+            try:
+                send(pkt, iface=zid)
+            except Exception as e:
+                    print(e)
 
-print("This is zelect, which abuses mDNS to synthesize the DNS\n\
+print("This is zelect-try, which abuses mDNS to synthesize the DNS\n\
 name 'test.local' for any complete IPv6 link-local address\n\
-entered by the user.\n\nUse with care!\n\n")
+entered by the user.\nUse with care!\n\n")
+
+print("This version is hacked around so that Windows tells\n\
+Linux about test.local via scapy.\n\n")
 
 # Outer loop for address input
 while True:
@@ -161,7 +167,7 @@ while True:
     # Input dialogue loop
 
     while not ready:
-        target = "fe80::2e3a:fdff:fea4:dde7%7" ## or any other test address you like
+        target = "fe80::2e3a:fdff:fea4:dde7%7" #a test value (Windows format)
         inp = input("Enter IPv6 link-local address%interface: ")
 
         if inp:
@@ -186,9 +192,9 @@ while True:
                 build_zones()    # this list needs to be fresh
                 if not (zix in zzzz):
                     0/0
-##                # to use scapy on Windows...                   
-##                zid = str(dev_from_index(zix))
-##                print("scapy iface:", zid)
+                if win_scapy:
+                    zid = str(dev_from_index(zix))
+                    print("scapy iface:", zid)
             else: # assume POSIX
                 zix = socket.if_nametoindex(zid)
         except:
@@ -199,6 +205,7 @@ while True:
     # Build mDNS response message
     
     msg = bytes.fromhex(mdns_response) + addr
+    msg_cancel = bytes.fromhex(mdns_response) + ipaddress.IPv6Address("fe80::1").packed
 
     if windows:
         # Open a socket to send mDNS multicasts
@@ -219,14 +226,11 @@ while True:
     print("Stopping...")
     ready = False # signals the sender to stop
     time.sleep(2) # wait for sender to exit and mDNS cache to clear
-    print("'test.local' should no longer resolve.")
-    t = input("R to restart, anything else to exit: ")
+    print("'test.local' should no longer resolve (after TTL expires on Linux).")
+    t = input("Restart or Exit? ")
     if t.lower().startswith("r"):
         if windows:
-            try:
-                mcsock.close()
-            except Exception as e:
-                print("Socket close error: ", e)
+            mcsock.close()
         # Start again
     else:
         break
