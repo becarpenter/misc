@@ -91,12 +91,13 @@ if (not windows) or win_scapy:
 ##fe800000000000000000000000000001  # packed address (16 bytes)
 
 ## And here is the response message in hexadecimal
-## mdns_response = "0000800000000001000000000474657374056c6f63616c00001c00010000012c0010"
+mdns_response_base = "0000800000000001000000000474657374056c6f63616c00001c00010000012c0010"
 #### with cache-flush 
-mdns_response = "0000800100000001000000000474657374056c6f63616c00001c80010000012c0010"
+##mdns_response_base = "0000800100000001000000000474657374056c6f63616c00001c800100000TTL0010"
 #### with broken message to trigger diagnostic
 ##mdns_response = "0000800000000001000000000474657374056c6f63616c00001c00010000012c0010"
-
+mdns_response = mdns_response_base.replace("0TTL", "012c") #5 minute TTL
+mdns_response_quit = mdns_response_base.replace("0TTL", "0000") #zero TTL
 
 
 mdns_addr = 'ff02::fb'
@@ -128,12 +129,13 @@ class sender(threading.Thread):
         threading.Thread.__init__(self, daemon=True)
 
     def run(self):
+        global first
         while ready:
             # Send an unsolicited mDNS response
-            # Repeat to bypass cache timeout
+            # Repeat to bypass auto timeout on Windows
             if windows: # and not win_scapy:
                 mcsock.sendto(msg,0,(mdns_addr, mdns_port))
-            if (not windows) or win_scapy:
+            if first and ((not windows) or win_scapy):
                 pkt = IPv6(src=scapy_src,dst=mdns_addr,hlim=255)/UDP(sport=mdns_port,dport=mdns_port)/Raw(load=msg)
                 #or, for use with sendp():
                 #pkt = Ether(dst='33:33:00:00:00:fb')/IPv6 ...
@@ -142,16 +144,18 @@ class sender(threading.Thread):
                 
                 try:
                     send(pkt, iface=zid, verbose=0)
+                    first = False #only need to send it once for Linux!
                 except Exception as e:
                     print(e)
-            time.sleep(2)
+            time.sleep(1)
         if (not windows) or win_scapy:
-            # Try to delete entry
+            # Try to delete entry - should work per RFC6762 section 10.1, but doesn't
             pkt = IPv6(src=scapy_src,dst=mdns_addr,hlim=255)/UDP(sport=mdns_port,dport=mdns_port)/Raw(load=msg_cancel)            
             try:
                 send(pkt, iface=zid)
             except Exception as e:
                     print(e)
+
 
 print("This is zelect-try, which abuses mDNS to synthesize the DNS\n\
 name 'test.local' for any complete IPv6 link-local address\n\
@@ -205,7 +209,7 @@ while True:
     # Build mDNS response message
     
     msg = bytes.fromhex(mdns_response) + addr
-    msg_cancel = bytes.fromhex(mdns_response) + ipaddress.IPv6Address("fe80::1").packed
+    msg_cancel = bytes.fromhex(mdns_response_quit) + addr
 
     if windows:
         # Open a socket to send mDNS multicasts
@@ -216,6 +220,7 @@ while True:
         mcsock.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_MULTICAST_HOPS, 255)  
 
     # Start sending the mDNS unsolicited response
+    first = True
     sender().start()
 
     print("Sending mDNS unsolicited response.")
