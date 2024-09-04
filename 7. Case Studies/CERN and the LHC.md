@@ -14,4 +14,4 @@ uses DHCPv6 for IPv6 address assignment.
 
 <!-- Link lines generated automatically; do not delete -->
 
-### [<ins>Next</ins>](8.%20Deployment%20Status/8.%20Deployment%20Status.md) [<ins>Top</ins>](7.%20Case%20Studies.md)
+### [<ins>Next</ins>](../8.%20Deployment%20Status/8.%20Deployment%20Status.md) [<ins>Top</ins>](7.%20Case%20Studies.md)
