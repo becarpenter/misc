@@ -5,7 +5,7 @@
 _zelect_ is a Python3 program that abuses mDNS to synthesize the DNS
 name _test.local_ for any complete IPv6 link-local address (LLA)
 entered by the user in a simple command line interface
-(which incidentally conforms to [draft-carpenter-6man-zone-ui](https://datatracker.ietf.org/doc/draft-carpenter-6man-zone-ui/)).
+(which incidentally conforms to [draft-ietf-6man-zone-ui](https://datatracker.ietf.org/doc/draft-ietf-6man-zone-ui/)).
 This program is a hack inspired by [draft-schinazi-httpbis-link-local-uri-bcp](https://datatracker.ietf.org/doc/draft-schinazi-httpbis-link-local-uri-bcp/).
 
 At present it only works properly on Windows 10, where it can use
