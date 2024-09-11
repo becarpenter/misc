@@ -24,6 +24,11 @@ to not working.
 This was tested on Windows 10 22H2 (build 19045.4046). No promises
 for any other Windows version.
 
+Since Windows supports a default zone index for LLAs, this success is
+relative - with multiple LANs present, things might go wrong.
+I can't test that on my setup because my Ethernet and WiFi are bridged
+together.
+
 An unintended side effect is that while _zelect_ is running, all other
 Windows hosts on the same LAN will also see the _test.local_ name
 in mDNS.
