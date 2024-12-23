@@ -6,7 +6,7 @@
 # Version: 2024-12-20 - original
 # Version: 2024-12-21 - some tidying & caching
 # Version: 2024-12-21 - cosmetics
-
+# Version: 2024-12-24 - switch to proper xml parser (for speed)
 
 ########################################################
 # Copyright (C) 2023-24 Brian E. Carpenter.                  
@@ -57,6 +57,7 @@ import os
 import sys
 import requests
 import json
+import xmltodict
 
 def show(msg):
     """Show a message"""
@@ -113,48 +114,35 @@ def wf(f,l):
 
 def field(fname, block):
     """Extract named field from XML block"""
-    if fname in block:
-        _,temp = block.split("<"+fname+">", maxsplit=1)
-        result,_ = temp.split("</"+fname+">", maxsplit=1)
-        return result
-    return ""
-    
+    try:
+        return block[fname]
+    except:
+        return None   
 
 def title(block):
     """Extract title from XML block"""
-    return field("title", block)
+    return block["title"]
 
 def doc_id(block):
     """Extract doc-id from XML block"""
-    return field("doc-id", block)  
+    return block["doc-id"]  
 
 def getblock(docid):
-    """Get XML block for a given RFC"""
+    """Get dictionary for a given RFC"""
     #if it's in the cache, we're done
     try:
         return(b_cache[docid])
     except:
         pass
-    #not in cache, search the whole XML
-    inrfc = False
-    new = ''
-    for line in whole:
-        #print(line)
-        if (not inrfc) and (not "<rfc-entry>" in line):
-            continue
-        #found the start of an RFC entry; build the new XML block
-        inrfc = True
-        new += line
-        if inrfc and "</rfc-entry>" in line:
-            #end of an rfc entry
-            if doc_id(new) == docid:
-                #found the right one, cache it and return
-                b_cache[docid] = new
-                return new
-            inrfc = False
-            new = ''
-            continue
-    return None
+    #not in cache, search the whole list
+    new = [r for r in all_rfcs if r['doc-id'] == docid]
+    if len(new) == 1:
+        b_cache[docid] = new[0]
+        return new[0]
+    else:
+        return False
+
+
 
 ######### Startup
 
@@ -213,7 +201,10 @@ if (not os.path.exists(fp)) or (time.time()-os.path.getmtime(fp) > 60*60*24*30):
     except Exception as E:
         logitw(str(E))
         crash("Cannot run without RFC index")
-whole = rf(fp)
+xf = open(fp,"r",encoding='utf-8', errors='replace')
+index_dict = xmltodict.parse(xf.read())
+xf.close()
+all_rfcs = index_dict['rfc-index']['rfc-entry']
 
 show("Will read errata.json")
 
@@ -253,11 +244,11 @@ for e in errata:
         #find info for the RFC
         b = getblock(docid)
         # if unknown, obsoleted, historic, or legacy - erratum is trivial
-        if "<current-status>UNKNOWN" in b or "<current-status>HISTORIC" in b or "<obsoleted-by>" in b or "<stream>Legacy" in b:
+        if b['current-status']=='UNKNOWN' or b['current-status']=='HISTORIC' or field('obsoleted-by',b) or b['stream']=='Legacy':
             trivia += ["Erratum "+err_id+" on "+docid+" (dead RFC)"]
             dead_ct += 1
         # if editorial before 2020 - erratum trivial
-        elif editorial and int(field('year',field('date',b))) < 2020:
+        elif editorial and int(b['date']['year']) < 2020:
             trivia += ["Erratum "+err_id+" on "+docid+" (old editorial)"]
             old_ct += 1
            
