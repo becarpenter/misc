@@ -6,6 +6,7 @@
 # Version: 2024-12-18 - original
 # Version: 2024-12-19 - tag obsoleted STDs with unknown STD number
 #                     - list IS separately from DS & PS
+# Version: 2024-12-24 - switch to proper xml parser
 
 
 ########################################################
@@ -56,6 +57,7 @@ import time
 import os
 import sys
 import requests
+import xmltodict
 
 def show(msg):
     """Show a message"""
@@ -112,36 +114,32 @@ def wf(f,l):
 
 def field(fname, block):
     """Extract named field from XML block"""
-    if fname in block:
-        _,temp = block.split("<"+fname+">", maxsplit=1)
-        result,_ = temp.split("</"+fname+">", maxsplit=1)
-        return result
-    return ""
-    
+    try:
+        return block[fname]
+    except:
+        return None   
 
 def title(block):
     """Extract title from XML block"""
-    return field("title", block)
+    return block["title"]
 
 def doc_id(block):
     """Extract doc-id from XML block"""
-    return field("doc-id", block)  
+    return block["doc-id"] 
 
 def interesting(block):
     """Save interesting RFC data from XML block"""
     global stds, bcps
-    if "UNKNOWN" in block:
+    status = block['current-status']
+    if status in ["UNKNOWN", "HISTORIC"]:
         return False
-    elif "<current-status>HISTORIC" in block:
-        return False
-    elif not "<obsoleted-by>" in block:
+    elif not field("obsoleted-by", block):
         return False
     else:
         #Potentially interesting
         #print(block)
-        status = field("current-status", block)
-        if "is-also" in block:
-            also,_ = field("is-also", block).split("<doc-id>")[1].split("</")
+        if field("is-also", block):
+            also = block["is-also"]["doc-id"]
             if also.startswith("BCP0"):
                 also = " (BCP"+also[3:].lstrip("0")+")"
             elif also.startswith("STD0"):
@@ -166,7 +164,6 @@ def interesting(block):
 
 inrfc = False
 new = ''
-numberfound = False
 count = 0
 stds = []
 istds = []
@@ -222,24 +219,17 @@ if (not os.path.exists(fp)) or (time.time()-os.path.getmtime(fp) > 60*60*24*30):
     except Exception as E:
         logitw(str(E))
         crash("Cannot run without RFC index")
-whole = rf(fp)
+xf = open(fp,"r",encoding='utf-8', errors='replace')
+index_dict = xmltodict.parse(xf.read())
+xf.close()
+all_rfcs = index_dict['rfc-index']['rfc-entry']
   
 timestamp = time.strftime("%Y-%m-%d %H:%M:%S UTC%z",time.localtime())
 
-for line in whole:
-    #print(line)
-    if (not inrfc) and (not "<rfc-entry>" in line):
-        continue
-    inrfc = True
-    new += line
-    if inrfc and "</rfc-entry>" in line:
-        #end of an rfc entry
-        if interesting(new):         
-            count += 1
-        inrfc = False
-        numberfound = False
-        new = ''
-        continue
+for r in all_rfcs:
+    if interesting(r):         
+        count += 1
+
     
 logit(str(count)+" obsoleted non-historic RFCs found")
 
