@@ -226,6 +226,7 @@ Those writing specifications and standards may also find the following useful:
 *   \[[RFC4775](https://datatracker.ietf.org/doc/rfc4775/)\] Procedures for Protocol Extensions and Variations
 *   \[[RFC5704](https://datatracker.ietf.org/doc/rfc5704/)\] Uncoordinated Protocol Development Considered Harmful
 *   \[[RFC5706](https://datatracker.ietf.org/doc/rfc5706/)\] Guidelines for Considering Operations and Management of New Protocols and Protocol Extensions
+*   \[[RFC7942](https://datatracker.ietf.org/doc/rfc7942/)\] Improving Awareness of Running Code: The Implementation Status Section
 *   \[[RFC9413](https://datatracker.ietf.org/doc/rfc9413/)\] Maintaining Robust Protocols
 
 ## <a id="iana">Parameter registration process (IANA)</a>
