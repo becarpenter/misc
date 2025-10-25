@@ -5,6 +5,7 @@ This informal guide to documents about the Internet Engineering Task Force (IETF
 
 This guide is updated irregularly and may be out of date when you read it if new official documents have appeared recently. Please refer to the latest RFCs, Internet Engineering Steering Group ([IESG](/about/groups/iesg/)) Statements, or discuss with Working Group chairs or Area Directors for current official guidance.
 
+* <a href="#introduction">Introduction</a>
 * <a href="#workflow">General description of workflow in the IETF</a>
 * <a href="#doctypes">Document types</a>
 * <a href="#stdstrack">Standards track documents</a>
