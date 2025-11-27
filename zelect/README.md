@@ -97,6 +97,12 @@ either, for the same reason - you can't specify the interface name.
 where it might work, but if a host has several LAN interfaces
 active, it definitely won't work.)
 
+FYI, tests run with:
+ - Linux kernel 5.4.0-150-generic (my test machine is antiquated and later kernels won't work)
+ - avahi 0.7-4ubuntu7.3
+ - ping from iputils s20190709
+
+
 
 ## Example run on Windows
 
