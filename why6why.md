@@ -1,8 +1,8 @@
 ## Why is IPv6 so complicated?
 
-There's no question that IPv6 is more complicated than IPv4, and people sometimes ask why that is. Surely it would have been much simpler to just add an extra 32 bits to the IPv4 address, and change nothing else?
+There's no question that IPv6 is more complicated than IPv4, and people sometimes ask why that is. Surely it would have been much simpler to just add an extra 32 bits to the IPv4 address, and change nothing else? In fact, every year or two people propose alternatives to IPv6 ('IPv8' is a popular name for such proposals) because they have asked themselves that question. This note attempts to answer the question, and to show why such proposals are a waste of everybody's time, especially for the people who propose them.
 
-There are at least three possible answers to that question:
+There are at least three possible answers:
 
 1. Just adding bits to the address isn't as simple as it seems.
 
@@ -28,7 +28,7 @@ In any case, various proposals for the new version were drafted in 1991/93 and t
 
 ### Why adding bits isn't simple
 
-IPv4 implementations, in 1994 and still today, have the 32-bit address format built into their code. Whether you expand the address size to 33, 64 or 128 bits, all IPv4 implementations will discard the packets. So it's a matter of fact that to expand the address size, you must change the protocol, and that means two things immediately:
+IPv4 implementations, in 1994 and still today, have the 32-bit address format built into their code. Whether you expand the address size to 33, 64 or 128 bits, all IPv4 implementations will discard the packets. So it's a matter of mathematical and physical fact that to expand the address size, you must change the protocol, and that means two things immediately:
 
 1. You have to change the version number.
 
@@ -40,9 +40,9 @@ Furthermore, you don't want to split the Internet in two, so you must design a m
 
 Two minutes of thought show that this third requirement has only two solutions:
 
-3A. Dual stack, in which the new machines speak both the old (IPv4) and new (IPng) protocol.
+&emsp;3A. Dual stack, in which the new machines speak both the old (IPv4) and new (IPng) protocol.
 
-3B. Translation, in which something translates addresses between the old and new protocols.
+&emsp;3B. Translation, in which something translates addresses between the old and new protocols.
 
 This has been known for more than 30 years {{RFC1671}}, although people still sometimes try to deny it.
 
@@ -65,16 +65,18 @@ Any purported design of a "better" or "simpler" IPng than IPv6 does not change t
 
 ### The protocol zoo
 
-In the early 1990s, the Internet had not yet conquered the world (after all, the World Wide Web did not exist before 1993) and there were many alternatives to IPv4 in use. Also, one of the most growly protocols in the zoo was wearing a smart business suit and lived in Switzerland with its rich friends - most governments and big businesses believed that the future network was certain to use the official international standard Open Systems Interconnection protocol suite. To some people it was inevitable that an OSI network layer would replace IPv4. At the same time, there were numerous proprietary network layer protocols in use. All the IETF had to offer were various competing proposals, not even running code! All these other existing protocols had juicy features that IPv4 did not provide. Whatever IPng would be, it was expected to have at least some new features; plain IPv4 with bigger addresses was not what people expected or wanted.
+In the early 1990s, the Internet had not yet conquered the world (after all, the World Wide Web hardly existed before 1993) and there were many alternatives to IPv4 in use. Also, one of the most growly protocols in the zoo was wearing a smart business suit and lived in Switzerland with its rich friends - most governments and big businesses believed that the future network was certain to use the official international standard Open Systems Interconnection protocol suite. To many people it seemed inevitable that an OSI network layer would replace IPv4. At the same time, there were numerous proprietary network layer protocols in use. All the IETF had to offer were various competing IPng proposals, not even running code! All these other existing protocols had juicy features that IPv4 did not provide. Whatever IPng would be, it was expected to have at least some new features; plain IPv4 with bigger addresses was not what people expected or wanted.
 
 Looking back, this was probably unfortunate, but it was a fact. IPng had to be better than IPv4, DECNET, Novell Netware, etc., and above all _better than OSI_.
 
 ### Did the IPv6 designers go mad?
 
-That might be going a bit far, so the question should probably be: Did the IPv6 design suffer from Second System Syndrome? Did we add stuff for its own sake?
+That might be going a bit far, so the question should probably be: Did the IPv6 design suffer from Second System Syndrome, ["the tendency for a successful first system (often small and relatively elegant) to be followed by a second system that becomes over-engineered or bloated"](https://en.wikipedia.org/wiki/Second-system_effect)? Did we add stuff for its own sake?
 
-The objective answer is "not much." We added the flow label (harmless if unused, as it was for many years). We tweaked the fragmentation mechanism. We replaced IPv4 "options" with IPv6 "extension headers". (Just as IPv4 options are largely unused, so are IPv6 extension headers.) Most important, we _added_ automatic address allocation (SLAAC) and the closely linked router advertisement (RA) mechanism, and the linked idea of an interface identifier (IID) as part of the address. That is partly redundant with DHCPv6, and the reason for that is that DHCP was new and unproven when SLAAC and RA were designed; DHCPv6 was actually a retrofit.
+The objective answer is "not much." We added the flow label (harmless if unused, as it was for many years). We tweaked the fragmentation mechanism. We replaced IPv4 "options" with IPv6 "extension headers". (Just as IPv4 options are largely unused, so are IPv6 extension headers.) Most important, we _added_ Stateless Address Autoconfiguration (SLAAC) and the closely linked router advertisement (RA) mechanism, and the linked idea of an interface identifier (IID) as part of the address. SLAAC was inspired by DECNET, Netware and Appletalk, none of which required manual address configuration. SLAAC is partly redundant with DHCPv6, and the reason for that is that DHCP was new and unproven when SLAAC and RA were designed; DHCPv6 was actually a retrofit.
 
 The author was too closely involved to say whether these changes and addditions amount to Second System Syndrome, but they were certainly not gratuitous changes. They have not caused most of the problems during IPv6 deployment; those almost all come from the area of IPv4/IPv6 coexistence.
 
-The main reason for IPv6, and its only real reason for existence, was bigger addresses. The problems of coexistence were inevitable, and it was hard to find the best (or rather, least bad) solutions.
+### Conclusion
+
+The main reason for IPv6, and its only real reason for existence, was bigger addresses. The problems of coexistence were inevitable, and it was hard to find the best (or rather, least bad) solutions. Most of the difficulties of IPv6 implementation and deployment are not the result of the details of IPv6 design. Any address length greater than 32 would create all the coexistence and transition problems we have experienced since 1994. Both dual stack deployment and protocol plus address translation were mathematically inevitable. No alternative choice can possibly avoid these issues.
