@@ -1,6 +1,6 @@
 ## Why is IPv6 so complicated?
 
-There's no question that IPv6 is more complicated than IPv4, and people sometimes ask why that is. Surely it would have been much simpler to just add an extra 32 bits to the IPv4 address, and change nothing else? In fact, every year or two people propose alternatives to IPv6 ('IPv8' is a popular name for such proposals) because they have asked themselves that question. This note attempts to answer the question, and to show why such proposals are a waste of everybody's time, especially for the people who propose them.
+There's no question that IPv6 is more complicated than IPv4, and people sometimes ask why that is. Surely it would have been much simpler to just add an extra 32 bits to the IPv4 address, and change nothing else? In fact, every year or two people propose alternatives to IPv6 ("IPv8" is a generic name for such proposals, which mainly involve 8-byte addresses) because they have asked themselves that question. This note attempts to answer the question, and to show why such proposals are a waste of everybody's time, especially for the people who propose them.
 
 There are at least three possible answers:
 
@@ -63,6 +63,8 @@ Protocol details, and the exact address length, don't matter. The XX cases can o
 
 Any purported design of a "better" or "simpler" IPng than IPv6 does not change this, however hard its authors try. In other words, the basic difficulties of IPv6 transition and coexistence have nothing to do with the design of IPv6.
 
+Incidentally, "IPv8" proponents often ask why IPv6 didn't simply stick some extra bits on the front of IPv4 addresses, instead of inventing a whole new format. Actually, we tried that: the  "IPv4-Compatible IPv6 address" format was defined in {{RFC3513}} but deprecated by {{RFC4291}} because it turned out to be of no practical use for coexistence or transition. The related "IPv4-Mapped IPv6 address" format is still valid and has a role in the POSIX socket API.
+
 ### The protocol zoo
 
 In the early 1990s, the Internet had not yet conquered the world (after all, the World Wide Web hardly existed before 1993) and there were many alternatives to IPv4 in use. Also, one of the most growly protocols in the zoo was wearing a smart business suit and lived in Switzerland with its rich friends - most governments and big businesses believed that the future network was certain to use the official international standard Open Systems Interconnection protocol suite. To many people it seemed inevitable that an OSI network layer would replace IPv4. At the same time, there were numerous proprietary network layer protocols in use. All the IETF had to offer were various competing IPng proposals, not even running code! All these other existing protocols had juicy features that IPv4 did not provide. Whatever IPng would be, it was expected to have at least some new features; plain IPv4 with bigger addresses was not what people expected or wanted.
@@ -77,6 +79,21 @@ The objective answer is "not much." We added the flow label (harmless if unused,
 
 The author was too closely involved to say whether these changes and additions amounted to Second System Syndrome, but they were certainly not gratuitous changes. They have not caused most of the problems during IPv6 deployment; those almost all come from the area of IPv4/IPv6 coexistence.
 
+### Do not make things worse
+
+It's worth adding that some of the "IPv8" proposals over the years have included ideas that would make things worse rather than better - things like geographic addressing, address prefixes based on Autonomous System numbers, addresses with semantics encoded in their bits, and the list goes on. All these things would break Internet routing, make site renumbering even harder, risk running out of addresses yet again, simplify pervasive surveillance, or cause other forms of operational harm.
+
+### It would take 25 years anyway
+
+Getting IPv6 to about 50% deployment has taken more than 25 years. Any alternative or new proposal would be the same. Setting aside IPv6, consider that all of the following examples have taken decades, not years, to deploy Internet-wide:
+
+1. Retiring frame relay
+2. Replacing ATM
+3. Deploying DNSSEC
+4. Deploying RPKI
+
 ### Conclusion
 
-The main reason for IPv6, and its only real reason for existence, was bigger addresses. The problems of coexistence were inevitable, and it was hard to find the best (or rather, least bad) solutions. Most of the difficulties of IPv6 implementation and deployment are not the result of the details of IPv6 design. Any address length greater than 32 would create all the coexistence and transition problems we have experienced since 1994. Both dual stack deployment and protocol plus address translation were mathematically inevitable. No alternative choice can possibly avoid these issues.
+The main reason for IPv6, and its only real reason for existence, was bigger addresses. The problems of coexistence were inevitable, and it was hard to find the best (or rather, least bad) solutions. Most of the difficulties of IPv6 implementation and deployment are not the result of the details of IPv6 design. Any address length greater than 32 would create all the coexistence and transition problems we have experienced since 1994. Both dual stack deployment and translation (of protocol plus addresses) were mathematically inevitable. No alternative choice can possibly avoid these issues.
+
+The community should avoid wasting time on such proposals.
