@@ -63,7 +63,7 @@ Protocol details, and the exact address length, don't matter. The XX cases can o
 
 Any purported design of a "better" or "simpler" IPng than IPv6 does not change this, however hard its authors try. In other words, the basic difficulties of IPv6 transition and coexistence have nothing to do with the design of IPv6.
 
-Incidentally, "IPv8" proponents often ask why IPv6 didn't simply stick some extra bits on the front of IPv4 addresses, instead of inventing a whole new format. Actually, we tried that: the  "IPv4-Compatible IPv6 address" format was defined in {{RFC3513}} but deprecated by {{RFC4291}} because it turned out to be of no practical use for coexistence or transition. The related "IPv4-Mapped IPv6 address" format is still valid and has a role in the POSIX socket API.
+Incidentally, "IPv8" proponents often ask why IPv6 didn't simply stick some extra bits on the front of IPv4 addresses, instead of inventing a whole new format. Actually, we tried that: the  "IPv4-Compatible IPv6 address" format was defined in {{RFC3513}} but deprecated by {{RFC4291}} because it turned out to be of no practical use for coexistence or transition. The related "IPv4-Mapped IPv6 address" format is still valid and has a role in the POSIX socket API. Mappings of this kind also figured in the moderately successful coexistence technologies known as 6to4 {{RFC3056, RFC3068}} and Teredo {{RFC4380}}, which have now been overtaken by events.
 
 ### The protocol zoo
 
