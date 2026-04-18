@@ -97,3 +97,25 @@ Getting IPv6 to about 50% deployment has taken more than 25 years. Any alternati
 The main reason for IPv6, and its only real reason for existence, was bigger addresses. The problems of coexistence were inevitable, and it was hard to find the best (or rather, least bad) solutions. Most of the difficulties of IPv6 implementation and deployment are not the result of the details of IPv6 design. Any address length greater than 32 would create all the coexistence and transition problems we have experienced since 1994. Both dual stack deployment and translation (of protocol plus addresses) were mathematically inevitable. No alternative choice can possibly avoid these issues.
 
 The community should avoid wasting time on such proposals.
+
+### Postscriptum
+
+For the record, here are some of the proposals made over the years.
+
+Steve Deering, 1992, "The Simple Internet Protocol" (SIP), an early IPng candidate, had 8-byte addresses. SIP was assigned version number 6.
+
+Paul Francis, 1992,  "The 'P' Internet Protocol" (PIP), an IPng candidate, {{RFC1621, RFC1622}}, was _officially_ IPv8 for a while. It had variable length addresses.
+
+Bob Hinden and Steve Deering 1993/4, "Simple Internet Protocol Plus" (SIPP), an IPng candidate, had 8-byte addresses. It inherited SIP's use of version number 6. At the end of the IPng decision process, it mutated to 16-byte addresses and was the immediate precursor of IPv6.
+
+Jim Fleming touted "IPv8" and "IPv16" starting in 1996, but I cannot find a coherent technical description of them.
+
+{{draft-terrell-ip-spec-ipv7-ipv8-addr-cls, draft-terrell-logic-analy-bin-ip-spec-ipv7-ipv8}} (1999)
+
+{{draft-shyam-real-ip-framework}} (2014)
+
+{{draft-omar-ipv10}} (2016)
+
+{{draft-thain-ipv8}} (2026)
+
+{{draft-hause-asip}} (2026)
