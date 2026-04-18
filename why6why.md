@@ -112,6 +112,8 @@ Paul Francis, 1992,  "The 'P' Internet Protocol" (PIP), an IPng candidate {{RFC1
 
 Bob Hinden and Steve Deering 1993/4, "Simple Internet Protocol Plus" (SIPP), an IPng candidate {{RFC1710}}, had 8-byte addresses. It inherited SIP's use of version number 6. At the end of the IPng decision process, it mutated to 16-byte addresses and was the immediate precursor of IPv6.
 
+{{draft-carpenter-aeiou}} (1994)
+
 Jim Fleming touted "IPv8" and "IPv16" starting in 1996, but we have not found a coherent technical description of them. The best we have found is a cryptic statement at [AFNOG](https://afnog.org/archives/archives/msg01304.html):
 ~~~
 IPv8 and IPv16 addresses are encoded in the **right-most 64-bits** of the 128-bit DNS.  The left-most 64-bits
