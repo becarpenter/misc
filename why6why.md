@@ -24,7 +24,7 @@ We will discuss each of these points in turn. To set the context, note that the 
    evolution of Internet layer protocols.
 ~~~
 
-In any case, various proposals for the new version were drafted in 1991/93 and the IETF had no clear direction. A BOF named "IPDECIDE" was held at the July 1993 IETF meeting in Amsterdam, The Netherlands. Its goal was to pick a direction, but the result was, um, indecisive. Next, the IESG decided to set up an IP Next Generation (IPng) Directorate under two Area Directors (Scott Bradner and Allison Mankin) to support the decision process. This led to the July 1994 choice, explained in detail by {{RFC1752}} and by the book _IPng: Internet Protocol Next Generation_, S. Bradner and A. Mankin (editors), Addison-Wesley, 1995.
+In any case, various proposals for the new version were drafted in 1991/93 and the IETF had no clear direction. A BOF named "IPDECIDE" was held at the July 1993 IETF meeting in Amsterdam, The Netherlands. Its goal was to pick a direction, but the result was, um, indecisive. Next, the IESG decided to set up an IP Next Generation (IPng) Directorate under two Area Directors (Scott Bradner and Allison Mankin) to support the decision process. This led to the July 1994 choice, guided by {{RFC1726}}, and explained in detail by {{RFC1752}} and by the book _IPng: Internet Protocol Next Generation_, S. Bradner and A. Mankin (editors), Addison-Wesley, 1995.
 
 ### Why adding bits isn't simple
 
@@ -65,6 +65,8 @@ Any purported design of a "better" or "simpler" IPng than IPv6 does not change t
 
 Incidentally, "IPv8" proponents often ask why IPv6 didn't simply stick some extra bits on the front of IPv4 addresses, instead of inventing a whole new format. Actually, we tried that: the  "IPv4-Compatible IPv6 address" format was defined in {{RFC3513}} but deprecated by {{RFC4291}} because it turned out to be of no practical use for coexistence or transition. The related "IPv4-Mapped IPv6 address" format is still valid and has a role in the POSIX socket API. Mappings of this kind also figured in the moderately successful coexistence technologies known as 6to4 {{RFC3056, RFC3068}} and Teredo {{RFC4380}}, which have now been overtaken by events.
 
+Finally, it's worth remembering that IPv4 is itself no longer simple. Compared with 1994, we now have a whole lot of complications: subscriber-side NAT, carrier-grade NAT, firewalls, IPsec, VPNs, Differentiated Services, link-local addresses, content distribution networks, etc.
+
 ### The protocol zoo
 
 In the early 1990s, the Internet had not yet conquered the world (after all, the World Wide Web hardly existed before 1993) and there were many alternatives to IPv4 in use. Also, one of the most growly protocols in the zoo was wearing a smart business suit and lived in Switzerland with its rich friends - most governments and big businesses believed that the future network was certain to use the official international standard Open Systems Interconnection protocol suite. To many people it seemed inevitable that an OSI network layer would replace IPv4. At the same time, there were numerous proprietary network layer protocols in use. All the IETF had to offer were various competing IPng proposals, not even running code! All these other existing protocols had juicy features that IPv4 did not provide. Whatever IPng would be, it was expected to have at least some new features; plain IPv4 with bigger addresses was not what people expected or wanted.
@@ -79,9 +81,11 @@ The objective answer is "not much." We added the flow label (harmless if unused,
 
 The author was too closely involved to say whether these changes and additions amounted to Second System Syndrome, but they were certainly not gratuitous changes. They have not caused most of the problems during IPv6 deployment; those almost all come from the area of IPv4/IPv6 coexistence.
 
+There was also unnecessary confusion caused by a rather political decision to make IPv6 _require_ support for IP Security (IPsec), which was an immature technology at the time. This was a definite brake on IPv6 deployment until it was dropped after some years.
+
 ### Do not make things worse
 
-It's worth adding that some of the "IPv8" proposals over the years have included ideas that would make things worse rather than better - things like geographic addressing, address prefixes based on Autonomous System numbers, addresses with semantics encoded in their bits, and the list goes on. All these things would break Internet routing, make site renumbering even harder, risk running out of addresses yet again, simplify pervasive surveillance, or cause other forms of operational harm.
+It's worth adding that some of the "IPv8" proposals over the years have included ideas that would make things worse rather than better - things like geographic addressing, address prefixes based on Autonomous System numbers, addresses with semantics encoded in their bits, and the list goes on. All these things would break Internet routing, make site renumbering even harder, risk running out of addresses yet again, simplify pervasive surveillance, or cause other forms of operational harm. (To take one example, although geographic addressing has some obvious advantages when geolocation is wanted, it is incompatible with the way Internet interdomain routing works.)
 
 ### It would take 25 years anyway
 
@@ -102,7 +106,7 @@ The community should avoid wasting time on such proposals.
 
 For the record, here are some of the proposals made over the years.
 
-Steve Deering, 1992, "The Simple Internet Protocol" (SIP), an early IPng candidate, had 8-byte addresses. SIP was assigned version number 6.
+Steve Deering, 1992, "The Simple Internet Protocol" (SIP), an early IPng candidate, had 8-byte addresses. SIP was assigned version number 6. It was only fully documented in 2018 {{RFC8507}}.
 
 Paul Francis, 1992,  "The 'P' Internet Protocol" (PIP), an IPng candidate, {{RFC1621, RFC1622}}, was _officially_ IPv8 for a while. It had variable length addresses.
 
