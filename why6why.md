@@ -108,11 +108,15 @@ For the record, here are some of the proposals made over the years.
 
 Steve Deering, 1992, "The Simple Internet Protocol" (SIP), an early IPng candidate, had 8-byte addresses. SIP was assigned version number 6. It was only fully documented in 2018 {{RFC8507}}.
 
-Paul Francis, 1992,  "The 'P' Internet Protocol" (PIP), an IPng candidate, {{RFC1621, RFC1622}}, was _officially_ IPv8 for a while. It had variable length addresses.
+Paul Francis, 1992,  "The 'P' Internet Protocol" (PIP), an IPng candidate {{RFC1621, RFC1622}}, was _officially_ IPv8 for a while. It had variable length addresses.
 
-Bob Hinden and Steve Deering 1993/4, "Simple Internet Protocol Plus" (SIPP), an IPng candidate, had 8-byte addresses. It inherited SIP's use of version number 6. At the end of the IPng decision process, it mutated to 16-byte addresses and was the immediate precursor of IPv6.
+Bob Hinden and Steve Deering 1993/4, "Simple Internet Protocol Plus" (SIPP), an IPng candidate {{RFC1710}}, had 8-byte addresses. It inherited SIP's use of version number 6. At the end of the IPng decision process, it mutated to 16-byte addresses and was the immediate precursor of IPv6.
 
-Jim Fleming touted "IPv8" and "IPv16" starting in 1996, but I cannot find a coherent technical description of them.
+Jim Fleming touted "IPv8" and "IPv16" starting in 1996, but we have not found a coherent technical description of them. The best we have found is a cryptic statement at [AFNOG](https://afnog.org/archives/archives/msg01304.html):
+~~~
+IPv8 and IPv16 addresses are encoded in the **right-most 64-bits** of the 128-bit DNS.  The left-most 64-bits
+are used for transition mechanisms.
+~~~
 
 {{draft-terrell-ip-spec-ipv7-ipv8-addr-cls, draft-terrell-logic-analy-bin-ip-spec-ipv7-ipv8}} (1999)
 
@@ -120,6 +124,10 @@ Jim Fleming touted "IPv8" and "IPv16" starting in 1996, but I cannot find a cohe
 
 {{draft-omar-ipv10}} (2016)
 
+{{draft-sambana-irtf-internet-protocol-sixteen}} (2022)
+
 {{draft-thain-ipv8}} (2026)
 
 {{draft-hause-asip}} (2026)
+
+Here's an [interesting blog](https://www.ip.network/blog/what-is-ipv8-protocol).
