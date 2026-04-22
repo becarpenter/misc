@@ -1,5 +1,7 @@
 ## Why is IPv6 so complicated?
 
+_This page is now incorporated in [book6](https://github.com/becarpenter/book6/blob/main/01.%20Introduction%20and%20Foreword/Why%20IPv6%20is%20so%20complicated.md) and no longer maintained here._ 
+
 There's no question that IPv6 is more complicated than IPv4, and people sometimes ask why that is. Surely it would have been much simpler to just add an extra 32 bits to the IPv4 address, and change nothing else? In fact, every year or two people propose alternatives to IPv6 ("IPv8" is a generic name for such proposals, which mainly involve 8-byte addresses) because they have asked themselves that question. This note attempts to answer the question, and to show why such proposals are a waste of everybody's time, especially for the people who propose them.
 
 There are at least three possible answers:
